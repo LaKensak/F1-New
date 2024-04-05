@@ -37,7 +37,7 @@ for (const grandPrix of data) {
         bouton.classList.add('btn', 'btn-sm', 'btn-outline-danger');
         bouton.innerText = 'Classement';
         bouton.onclick = function () {
-            document.location.href = '/classementgranprix/index.php?id=' + grandPrix.id;
+            document.location.href = '/classementgranprix/indexf.php?id=' + grandPrix.id;
         };
         tr.insertCell().appendChild(bouton);
     } else {
