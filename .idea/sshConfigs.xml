@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="ssh-formationweb.alwaysdata.net" id="7f00f2ff-74f7-44e0-a6cf-9f461022b21f" port="22" nameFormat="DESCRIPTIVE" username="formationweb" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>

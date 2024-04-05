@@ -1,0 +1,518 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: darkslategray;
+    font-weight: 400;
+    background-color: white;
+}
+
+main {
+    flex-grow: 1;
+    margin: 5px 20px 5px 20px;
+}
+
+header, footer {
+    min-height: 70px;
+    vertical-align: middle;
+    color: white;
+    background-color: #00469c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+}
+
+header {
+    justify-content: space-between;
+}
+
+footer {
+    justify-content: space-between;
+    visibility: hidden;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+
+/*
+ Tableau
+*/
+
+table {
+    color: black;
+    border: 2px solid #68a0dd;
+    padding: 5px;
+}
+
+tr {
+    line-height: 25px;
+}
+
+thead {
+    background-color: #D0D0D0;
+
+    color: black;
+    font-weight: bold;
+    border: 2px solid #68a0dd;
+}
+
+tbody {
+    /*  background-color: #E0E0E0; */
+    border: 2px solid #68a0dd;
+}
+
+th {
+    line-height: 40px;
+    padding: 5px;
+}
+
+td {
+    padding: 5px;
+}
+
+/* lien */
+
+a, a:hover, a:visited, a:active {
+    text-decoration: none;
+}
+
+/* autres conteneurs */
+.page {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.cadre {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    border: #1d1d1d 1px solid;
+}
+
+.menu {
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    margin-top: 10px;
+    background-color: #FFF;
+}
+
+.cadre .menu a {
+    display: block;
+    text-align: left;
+}
+
+/* les champs de saisie */
+
+fieldset {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+legend {
+    width: auto;
+    padding: 0 5px;
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: inherit;
+    border-bottom: none;
+    text-align: left;
+    float: none !important;
+}
+
+.obligatoire:after {
+    color: red;
+    content: ' *';
+}
+
+.form-control, .form-select {
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: 0;
+    box-shadow: 0 0 0 0;
+    color: dodgerblue;
+}
+
+.form-control:disabled, .form-select:disabled {
+    border: 0 solid;
+    border-radius: 8px;
+}
+
+.form-control:focus {
+    border: 1px solid dodgerblue;
+    border-radius: 10px;
+    outline: 0;
+    box-shadow: 0 0 0 0;
+}
+
+.form-select:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0;
+}
+
+input::placeholder {
+    font-size: 0.8rem;
+}
+
+input.erreur {
+    background-image: url('erreur.png');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: 16px 18px;
+    background-position: 98% 50%;
+    cursor: pointer;
+    color: #FF4500 !important;
+    border-color: #FF4500 !important;
+}
+
+/* RETIRER LES FLÈCHES DES INPUTS NUMBER */
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* une case à cocher mise en forme par bootstrap : le label est toujours à droite */
+
+
+.formulaire {
+    margin: 15px 20px 15px 20px;
+    padding: 10px;
+    background-color: white;
+    color: darkblue;
+    border-radius: 10px;
+    border: darkblue 1px solid;
+}
+
+.centre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    border: darkblue 1px solid;
+}
+
+.btnOption {
+    display: inline-block;
+    font-weight: 400;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    padding: 0.25rem 0.5rem;
+    font-style: normal;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    color: white;
+    border-color: dodgerblue;
+    background-color: #09794e;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btnOption:hover {
+    color: #fff;
+    background-color: #FF0000;
+    border-color: #007bff;
+}
+
+.login {
+    background-image: url('login.png');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: 16px 16px;
+    background-position: 1% 50%;
+    cursor: pointer;
+    padding-left: 25px;
+}
+
+.password {
+    background-image: url('pwd.png');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: 16px 16px;
+    background-position: 1% 50%;
+    cursor: pointer;
+    padding-left: 25px;
+}
+
+/* Style pour un champ de recherche */
+
+input[type=text].recherche {
+    border: 1px solid;
+    border-radius: 30px;
+    background-size: 16px 18px;
+    background: url(search.svg) no-repeat 98% 50%;
+    min-width: 250px;
+}
+
+input[type=text].recherche:focus {
+    font-weight: bold;
+    border: 1px solid dodgerblue;
+}
+
+.erreur {
+    color: #a94442 !important;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.25em;
+}
+
+.messageErreur {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: red;
+}
+
+.titre {
+    color: midnightblue;
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-family: verdana, arial, helvetica, sans-serif;
+}
+
+.article {
+    color: midnightblue;
+    font-size: 1.0rem;
+    font-weight: normal;
+    text-align: justify;
+    font-family: verdana, arial, helvetica, sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.remarque {
+    border-left: 5px solid #007bff; /* Couleur de la bordure à gauche */
+    padding-left: 15px; /* Espacement à gauche de la bordure */
+    margin: 10px 0; /* Espacement autour de la remarque */
+    background-color: #f8f9fa; /* Couleur de fond */
+    font-style: italic; /* Style d'italique */
+}
+
+/* Style pour la zone déposer d'un upload par glisser déposer */
+.upload {
+    border: #00469c 1px dashed;
+    margin: 10px 0 10px 0;
+    background-color: whitesmoke;
+    /* pour centrer verticalement et horizontalement */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload:hover {
+    background-color: #efefef;
+    cursor: pointer
+}
+
+.upload img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
+
+/* Défilement de droite à gauche */
+
+.marquee-rtl {
+    overflow: hidden; /* masque tout ce qui dépasse */
+    width: 100%;
+    display: block;
+}
+
+.marquee-rtl > div {
+    display: inline-block; /* important */
+    color: red;
+    white-space: nowrap; /* pas de passage à la ligne */
+    animation: defilement-rtl 30s infinite linear; /* référence à la règle @keyframes mise en oeuvre */
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+.marquee-rtl:hover > div {
+    animation-play-state: paused; /* met en pause le défilement */
+}
+
+@keyframes defilement-rtl {
+    0% {
+        transform: translate(100%);
+    }
+    100% {
+        transform: translate(-100%);
+    }
+}
+
+/* ck editor */
+.ck-editor__editable {
+    min-height: 200px;
+!important;
+    max-height: 400px;
+!important;
+}
+
+/* Limiter la hauteur de l'éditeur à 500 pixels */
+#cke_description {
+    max-height: 500px;
+    overflow-y: auto; /* Ajouter une barre de défilement en cas de dépassement */
+}
+
+/* fixer certains paramètres en fonction de la taille de l'écran
+Extra small <576px	Small ≥576px	 Medium ≥768px Large ≥992px	 Extra large ≥1200px
+*/
+
+/* pour une taille inférieure à 576 px */
+@media (max-width: 576px) {
+    .image {
+        display: none
+    }
+
+    .masquer {
+        display: none
+    }
+
+    html {
+        font-size: 10px;
+    }
+
+    .logo {
+        height: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .masquer {
+        display: none
+    }
+}
+
+/* à partir de 576 px */
+@media (min-width: 576px) {
+    html {
+        font-size: 11px;
+    }
+
+    .image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%
+    }
+
+    .logo {
+        height: 50px;
+    }
+}
+
+/* à partir de 768 px  */
+@media (min-width: 768px) {
+    html {
+        font-size: 12px;
+    }
+
+    .logo {
+        height: 75px;
+    }
+}
+
+/* à partir de 992 px  */
+@media (min-width: 992px) {
+    html {
+        font-size: 13px;
+    }
+
+    .logo {
+        height: 100px;
+    }
+}
+
+/* à partir de 1200 px */
+@media (min-width: 1200px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/* à partir de 1600 px  */
+@media (min-width: 1600px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/*
+ Styles pour la grille de connexion
+  permet de placer deux icônes dont un masqué au bout du champ password
+*/
+
+label {
+    position: relative;
+}
+
+label input {
+    font-size: 1em;
+    background: transparent;
+    padding: 1rem 1.2rem;
+    width: 350px;
+    border-radius: 5px;
+    border: 2px solid #7a7a7a;
+    transition: all 0.2s;
+}
+
+label input:focus {
+    border-color: #ff4754;
+}
+
+label .password-icon {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 45%;
+    right: 20px;
+    transform: translateY(-55%);
+    width: 20px;
+    transition: all 0.2s;
+}
+
+label .password-icon:hover {
+    cursor: pointer;
+    color: #ff4754;
+}
+
+label .password-icon .off {
+    display: none;
+}
+
