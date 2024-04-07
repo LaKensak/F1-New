@@ -1,51 +1,40 @@
 'use strict';
+// Affichage des coureurs dans un tableau triable
 
-/* global data, nomEcurie */
-
+/* global data  */
 
 // chargement des données de l'interface
 let lesLignes = document.getElementById('lesLignes');
-let nom = document.getElementById('nom');
 
-nom.innerText = nomEcurie;
-
-for (const resultat of data) {
+for (const ecurie of data) {
     // création d'une ligne
     const tr = lesLignes.insertRow();
     tr.style.lineHeight = '2.5rem';
 
 
-    // colonne pour la date
+    // colonne pour la place
     let td = tr.insertCell();
     td.style.textAlign = 'center';
-    td.innerText = resultat.dateFr;
+    td.innerText = ecurie.placeClassement;
 
 
-    // colonne pour le pays
-    let img = new Image();
-    img.src = '/img/pays/' + resultat.idPays + '.png';
-    img.style.verticalAlign = 'middle';
-    tr.insertCell().appendChild(img);
-
-    // colonne pour le Grand Prix
-    tr.insertCell().innerText = resultat.nom;
+    // colonne pour le nom de l'écurie
+    tr.insertCell().innerText = ecurie.nomEcurie;
 
     // colonne pour les points
     td = tr.insertCell();
     td.style.textAlign = 'right';
     td.style.paddingRight = '50px';
-    td.innerText = resultat.point;
+    td.innerText = ecurie.pointClassement;
 
     // colonne pour le détail
     td = tr.insertCell();
     td.style.textAlign = 'center';
     //
     let a = document.createElement('a');
-    a.href = '/ecurie/';
     let i = document.createElement('i');
-    i.classList.add('bi', 'bi-search');
-    // i.className = 'bi bi-search';
     a.appendChild(i);
     td.appendChild(a);
+
 }
 

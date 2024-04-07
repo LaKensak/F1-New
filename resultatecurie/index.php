@@ -33,13 +33,13 @@ $nomEcurie = $ligne['nom'];
 
 $sql = <<<EOD
 
-    SELECT date_format(date,'%d/%m/%Y') as dateFr, grandprix.nom,  sum(resultat.point) as point,
-           grandprix.idPays
-    FROM resultat
-       JOIN grandprix ON resultat.idGrandprix = grandprix.id
-       join pilote on resultat.idPilote = pilote.id
-    where idEcurie = :id
-    Group by grandprix.date, grandprix.nom
+  SELECT date_format(date,'%d/%m/%Y') as dateFr, grandprix.nom,  sum(resultat.point) as point,
+          grandprix.idPays
+FROM resultat
+     JOIN grandprix ON resultat.idGrandprix = grandprix.id
+join pilote on resultat.idPilote = pilote.id
+where idEcurie = :id
+ Group by grandprix.date, grandprix.nom
 
 EOD;
 $data = json_encode($select->getRows($sql, ['id' => $id]));
@@ -50,7 +50,13 @@ $head = <<<EOD
     let nomEcurie = "$nomEcurie";
 </script>
 EOD;
-
+//SELECT date_format(date,'%d/%m/%Y') as dateFr, grandprix.nom,  sum(resultat.point) as point,
+//           grandprix.idPays
+//    FROM resultat
+//       JOIN grandprix ON resultat.idGrandprix = grandprix.id
+//       join pilote on resultat.idPilote = pilote.id
+//    where idEcurie = :id
+//    Group by grandprix.date, grandprix.nom
 // chargement des ressources spécifiques de l'interface
 
 
