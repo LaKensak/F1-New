@@ -24,6 +24,9 @@ EOD;
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.css"
+          integrity="sha512-VcyUgkobcyhqQl74HS1TcTMnLEfdfX6BbjhH8ZBjFU9YTwHwtoRtWSGzhpDVEJqtMlvLM2z3JIixUOu63PNCYQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="/css/style.css">
 
     <?php
@@ -48,16 +51,106 @@ EOD;
             document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(element => new bootstrap.Tooltip(element));
             document.getElementById('pied').style.visibility = 'visible';
         }
+
+        function test() {
+            let tabsNewAnim = $('#navbarSupportedContent');
+            let selectorNewAnim = $('#navbarSupportedContent').find('li').length;
+            let activeItemNewAnim = tabsNewAnim.find('.active');
+            let activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
+            let activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
+            let itemPosNewAnimTop = activeItemNewAnim.position();
+            let itemPosNewAnimLeft = activeItemNewAnim.position();
+            $('.hori-selector').css({
+                'top': itemPosNewAnimTop.top + 'px',
+                'left': itemPosNewAnimLeft.left + 'px',
+                'height': activeWidthNewAnimHeight + 'px',
+                'width': activeWidthNewAnimWidth + 'px'
+            });
+            $('#navbarSupportedContent').on('click', 'li', function (e) {
+                $('#navbarSupportedContent ul li').removeClass('active');
+                $(this).addClass('active');
+                let activeWidthNewAnimHeight = $(this).innerHeight();
+                let activeWidthNewAnimWidth = $(this).innerWidth();
+                let itemPosNewAnimTop = $(this).position();
+                let itemPosNewAnimLeft = $(this).position();
+                $('.hori-selector').css({
+                    'top': itemPosNewAnimTop.top + 'px',
+                    'left': itemPosNewAnimLeft.left + 'px',
+                    'height': activeWidthNewAnimHeight + 'px',
+                    'width': activeWidthNewAnimWidth + 'px'
+                });
+            });
+        }
+
+        $(document).ready(function () {
+            setTimeout(function () {
+                test();
+            });
+        });
+        $(window).on('resize', function () {
+            setTimeout(function () {
+                test();
+            }, 500);
+        });
+        $('.navbar-toggler').click(function () {
+            $('.navbar-collapse').slideToggle(300);
+            setTimeout(function () {
+                test();
+            });
+        });
+
+
+        jQuery(document).ready(function ($) {
+            let path = window.location.pathname.split('/').pop();
+
+
+            if (path == '') {
+                path = 'index.html';
+            }
+
+            let target = $('#navbarSupportedContent ul li a[href="' + path + '"]');
+
+            target.parent().addClass('active');
+        });
+
     </script>
 </head>
 <body>
 <div class="container-fluid d-flex flex-column p-0 h-100">
     <header>
-        <div>Projet F1</div>
-        <div class="my-auto"><?= $titreFonction ?? "" ?></div>
-        <span id="actionTitre" class="mx-5 text-danger "><?= $retour ?? "" ?></span>
+        <nav class="navbar navbar-expand-custom navbar-mainbg">
+            <a class="navbar-brand navbar-logo" href=".."><span><img src="/img/f1_logo.svg" alt="Formula 1"></span></a>
+            <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <div class="hori-selector">
+                        <div class="left"></div>
+                        <div class="right"></div>
+                    </div>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/calendrier"><i class="fas fa-tachometer-alt"></i>Calendrier GP</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/classementpilote"><i class="far fa-address-book"></i>Pilotes</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/classementecurie"><i class="far fa-clone"></i>Ecuries</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/classementdetailleecurie"><i class="far fa-calendar-alt"></i>Classement
+                            écuries</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/classementpilote"><i class="far fa-chart-bar"></i>Classment
+                            Pilotes</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
-
     <main>
         <div class="my-1" id="msg"></div>
         <?php

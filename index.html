@@ -1,20 +1,98 @@
-<div class="cadre mx-auto m-3 " style="width: 72rem;">
-    <div class="menu">
-        <a href='/calendrier' class="btn btn-sm btn-outline-secondary p-3 m-3">
-            Le calendrier des Grands prix
-        </a>
-        <a href='/classementpilote' class="btn btn-sm btn-outline-secondary p-3 m-3">
-            Classement des pilotes
-        </a>
-        <a href='/classementecurie' class="btn btn-sm btn-outline-secondary p-3 m-3">
-            Classement des écuries
-        </a>
-        <a href='/classementdetailleecurie' class="btn btn-sm btn-outline-secondary p-3 m-3">
-            Classement détaillé des écuries
-        </a>
-        <a href='/classementpilote' class="btn btn-sm btn-outline-secondary p-3 m-3">
-            Classement détaillé des pilotes
-        </a>
-    </div>
+<body translate="no">
+<div class="preloader">
+    <div class="circle circle1"
+         style="transform: translate3d(0px, 0px, 0px) scale(1.09458, 1.09458); opacity: 1; box-shadow: rgb(252,0,0) 0px 14px 16px 0px;"></div>
+    <div class="circle circle2"
+         style="transform: translate3d(0px, 0px, 0px) scale(1.04722, 1.04722); opacity: 1; box-shadow: rgba(0, 0, 0, 0.4) 0px 9px 12px 0px;"></div>
+    <div class="circle circle3"
+         style="transform: translate3d(0px, 0px, 0px) scale(1.15506, 1.15506); opacity: 1; box-shadow: rgba(133,0,0,0.4) 0px 20px 21px 0px;"></div>
 </div>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+    }
 
+    .preloader {
+        width: 100%;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    .circle {
+        border-radius: 190px;
+        box-shadow: 0 4px 8px rgb(255, 255, 255);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+    }
+
+    .circle1 {
+        background-color: #d55252;
+        width: 240px;
+        height: 240px;
+        margin-top: -120px;
+        margin-left: -120px;
+    }
+
+    .circle2 {
+        background-color: #d55252;
+        width: 170px;
+        height: 170px;
+        margin-top: -85px;
+        margin-left: -85px;
+    }
+
+    .circle3 {
+        background-color: #d55252;
+        width: 100px;
+        height: 100px;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script id="rendered-js">
+    var $circles = $('.circle'),
+        tl = new TimelineMax(),
+        random1 = getRandomNumber(),
+        imgUrl1 = '' + random1,
+        image1 = $('<img>');
+
+    function loaderOut() {
+        console.log('L\image est bien charger');
+    }
+
+    function getRandomNumber() {
+        return Math.floor(Math.random() * 10000);
+    }
+
+    image1.on('load', loaderOut);
+    image1.attr('src', imgUrl1);
+
+    TweenMax.set($circles, {scale: 0});
+
+    tl.insert(
+        TweenMax.staggerTo($circles.toArray(), 1, {
+            opacity: 1,
+            scale: 1,
+            ease: Power1.easeIn
+        }, 0.2)
+    );
+
+    tl.insert(
+        TweenMax.staggerTo($circles.toArray(), 0.5, {
+            scale: 1.2,
+            boxShadow: '0 25px 25px rgba(0, 0, 0, 0.4)',
+            repeat: -1,
+            yoyo: true,
+            ease: Power1.easeOut
+        }, 0.2), '-=0.4'
+    );
+</script>
+</body>
