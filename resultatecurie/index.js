@@ -36,16 +36,5 @@ for (const resultat of data) {
     td.style.paddingRight = '50px';
     td.innerText = resultat.point;
 
-    // colonne pour le détail
-    td = tr.insertCell();
-    td.style.textAlign = 'center';
-    //
-    let a = document.createElement('a');
-    a.href = '/ecurie/';
-    let i = document.createElement('i');
-    i.classList.add('bi', 'bi-search');
-    // i.className = 'bi bi-search';
-    a.appendChild(i);
-    td.appendChild(a);
 }
 

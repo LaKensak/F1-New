@@ -100,19 +100,6 @@ EOD;
         });
 
 
-        jQuery(document).ready(function ($) {
-            let path = window.location.pathname.split('/').pop();
-
-
-            if (path == '') {
-                path = 'index.html';
-            }
-
-            let target = $('#navbarSupportedContent ul li a[href="' + path + '"]');
-
-            target.parent().addClass('active');
-        });
-
     </script>
 </head>
 <body>
@@ -134,18 +121,14 @@ EOD;
                         <a class="nav-link" href="/calendrier"><i class="fas fa-tachometer-alt"></i>Calendrier GP</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/classementpilote"><i class="far fa-address-book"></i>Pilotes</a>
+                        <a class="nav-link" href="/classementpilote"><i class="far fa-address-book"></i>Classement Pilotes</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="/classementecurie"><i class="far fa-clone"></i>Ecuries</a>
+                        <a class="nav-link" href="/classementecurie"><i class="far fa-clone"></i>Classement Ecuries</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="/classementdetailleecurie"><i class="far fa-calendar-alt"></i>Classement
                             écuries</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="/classementpilote"><i class="far fa-chart-bar"></i>Classment
-                            Pilotes</a>
                     </li>
                 </ul>
             </div>
