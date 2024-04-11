@@ -9,23 +9,31 @@ $retour = "/";
 $select = new Select();
 
 //   (select count(*) from resultat where idGrandPrix = id) as nb
-$sql = <<<EOD
-    Select ecurie.id,
-       ecurie.nom,
-       idPays,
-       pays.nom as nomPays,
-       (select sum(point)
-        from classementPilote
-        where idEcurie = ecurie.id
-        group by idEcurie)          as point,
-       (SELECT COUNT(*) + 1
-        FROM (SELECT SUM(point) AS total_points
-              FROM classementPilote
-              GROUP BY idEcurie) as p
-        WHERE total_points > point) AS place
-from ecurie
-   join pays on ecurie.idPays = pays.id
-ORDER BY point DESC;
+ $sql = <<<EOD
+   SELECT
+    pilote.id,
+    pilote.nom as piloteNom,
+    pilote.idPays,
+    pays.nom AS nomPays,
+    e.nom AS nomEcurie,
+    (SELECT SUM(point)
+     FROM classementPilote
+     WHERE classementPilote.id = pilote.id
+     GROUP BY classementPilote.id) AS point,
+    (SELECT COUNT(*) + 1
+     FROM (SELECT SUM(point) AS total_points
+           FROM classementPilote
+           GROUP BY id) AS p
+     WHERE total_points > point) AS place
+FROM
+    pilote
+JOIN
+    f1.ecurie e ON pilote.idEcurie = e.id
+JOIN
+    pays ON pilote.idPays = pays.id
+ORDER BY
+    point DESC;
+
 EOD;
 
 $data = json_encode($select->getRows($sql));
