@@ -44,7 +44,7 @@ EOD;
         $select = new Select();
         return $select->getRows($sql);
     }
-//
+
 }
 
 // Exemple d'utilisation :
