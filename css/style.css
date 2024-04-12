@@ -225,7 +225,7 @@ p {
 
 table {
     color: black;
-    border: 2px solid #68a0dd;
+    border: 2px solid #e10600;
     padding: 5px;
 }
 
@@ -238,12 +238,12 @@ thead {
 
     color: black;
     font-weight: bold;
-    border: 2px solid #68a0dd;
+    border: 2px solid #e10600;
 }
 
 tbody {
     /*  background-color: #E0E0E0; */
-    border: 2px solid #68a0dd;
+    border: 2px solid #e10600;
 }
 
 th {
@@ -319,7 +319,7 @@ legend {
     border-radius: 5px;
     outline: 0;
     box-shadow: 0 0 0 0;
-    color: dodgerblue;
+    color: #e10600;
 }
 
 .form-control:disabled, .form-select:disabled {
@@ -328,7 +328,7 @@ legend {
 }
 
 .form-control:focus {
-    border: 1px solid dodgerblue;
+    border: 1px solid #e10600;
     border-radius: 10px;
     outline: 0;
     box-shadow: 0 0 0 0;
@@ -374,9 +374,9 @@ input::-webkit-outer-spin-button {
     margin: 15px 20px 15px 20px;
     padding: 10px;
     background-color: white;
-    color: darkblue;
+    color: #e10600;
     border-radius: 10px;
-    border: darkblue 1px solid;
+    border: #e10600 1px solid;
 }
 
 .centre {
@@ -384,7 +384,7 @@ input::-webkit-outer-spin-button {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    border: darkblue 1px solid;
+    border: #e10600 1px solid;
 }
 
 .btnOption {
@@ -400,8 +400,8 @@ input::-webkit-outer-spin-button {
     line-height: 1.5;
     border-radius: 0.2rem;
     color: white;
-    border-color: dodgerblue;
-    background-color: #09794e;
+    border-color: #e10600;
+    background-color: #e10600;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -409,7 +409,7 @@ input::-webkit-outer-spin-button {
 .btnOption:hover {
     color: #fff;
     background-color: #FF0000;
-    border-color: #007bff;
+    border-color: #e10600;
 }
 
 .login {
@@ -444,7 +444,7 @@ input[type=text].recherche {
 
 input[type=text].recherche:focus {
     font-weight: bold;
-    border: 1px solid dodgerblue;
+    border: 1px solid #e10600;
 }
 
 .erreur {
@@ -481,7 +481,7 @@ input[type=text].recherche:focus {
 }
 
 .remarque {
-    border-left: 5px solid #007bff; /* Couleur de la bordure à gauche */
+    border-left: 5px solid #e10600; /* Couleur de la bordure à gauche */
     padding-left: 15px; /* Espacement à gauche de la bordure */
     margin: 10px 0; /* Espacement autour de la remarque */
     background-color: #f8f9fa; /* Couleur de fond */
