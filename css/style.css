@@ -189,7 +189,87 @@ main {
     flex-grow: 1;
     margin: 5px 20px 5px 20px;
 }
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 25px;
+    width: 350px; /* Ajustez la largeur selon vos besoins */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: auto; /* Cela centre le cadre horizontalement */
+    margin-top: 15px; /* Ajoutez un espace en haut si nécessaire */
+    height: auto;
+}
 
+.infos {
+    display: flex;
+    justify-content: space-between; /* Place les éléments sur les côtés opposés */
+    align-items: center; /* Centre verticalement les éléments */
+}
+
+.nationalite {
+    display: flex;
+    justify-content: space-between; /* Place les éléments sur les côtés opposés */
+    align-items: center; /* Centre verticalement les éléments */
+}
+
+#pays {
+    width: 20px; /* Réglez la largeur de l'image selon vos besoins */
+    height: auto; /* La hauteur s'ajuste automatiquement pour conserver les proportions de l'image */
+    border: solid 1px #1d1d1d;
+}
+
+#voiture {
+    align-items: flex-end;
+}
+
+.photoPilote {
+    text-align: center;
+}
+
+.photoPilote img {
+    width: 250px; /* Ajustez la taille de l'image selon vos besoins */
+    margin-bottom: 10px;
+}
+
+.photoPilote p {
+    margin: 5px 0;
+}
+
+.piloteWrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Espacement entre le numéro du pilote et le pilote */
+}
+
+.numPilote {
+    margin-right: 10px; /* Espacement entre le numéro de pilote et le pilote */
+    border: solid 1px #676767;
+    width: 20px;
+    border-radius: 15px;
+    color: #FFFFFF;
+    background: #939292;
+}
+
+#paysPilote1, #paysPilote2 {
+    width: 20px; /* Réglez la largeur de l'image selon vos besoins */
+    height: auto; /* La hauteur s'ajuste automatiquement pour conserver les proportions de l'image */
+    border: solid 1px #656565;
+}
+
+#photo1, #photo2 img {
+    width: 100px; /* Ajustez la taille de l'image selon vos besoins */
+    margin-bottom: 10px;
+    border-radius: 100px;
+}
+#photo2 {
+    width: 100px; /* Ajustez la taille de l'image selon vos besoins */
+    margin-bottom: 10px;
+    border-radius: 100px;
+}
+
+.transparent-bg {
+    background-color: transparent;
+}
 
 
 .header, footer {

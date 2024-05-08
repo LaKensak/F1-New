@@ -10,29 +10,21 @@ $select = new Select();
 
 $sql = <<<EOD
 SELECT
-    ecurie.nom,
-    SUM(resultat.point) AS total_points,
-    (
-        SELECT SUM(point)
-        FROM classementPilote
-        WHERE idEcurie = ecurie.id
-        GROUP BY idEcurie
-    ) AS point,
+    pilote.nom,
+    SUM(resultat.point) AS points,
     (
         SELECT COUNT(*) + 1
         FROM (
-            SELECT SUM(point) AS total_points
+            SELECT SUM(point) AS points
             FROM classementPilote
-            GROUP BY idEcurie
+            GROUP BY id
         ) AS p
-        WHERE total_points > SUM(resultat.point)
+        WHERE points > SUM(resultat.point)
     ) AS place,
-    REPLACE(
     GROUP_CONCAT(
-        IF(resultat.point = 0, '-', resultat.point) ORDER BY grandprix.date
-    ), ',', '  '
-) AS PointParGP
-
+        CONCAT(IF(resultat.point = 0, '-/', CONCAT(resultat.point, '/')), resultat.place) ORDER BY grandprix.date SEPARATOR '  '
+    ) AS PointParGP,
+    GROUP_CONCAT(DISTINCT grandprix.idPays) AS pays_participes
 FROM
     ecurie
 JOIN
@@ -44,9 +36,10 @@ JOIN
 JOIN
     grandprix ON resultat.idGrandprix = grandprix.id
 GROUP BY
-    ecurie.id
+    pilote.id
 ORDER BY
-    total_points DESC; 
+    points DESC;
+
 EOD;
 
 

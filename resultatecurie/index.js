@@ -1,13 +1,41 @@
 'use strict';
 
-/* global data, nomEcurie */
+/* global data, nomEcurie, logoEcurie, paysEcurie,nomPilote, imgVoiture, prenom1, photoPilote,photoPilote1,nomPilote1,prenom2,nomPilote2,idPilote1,idPilote2, PaysPilote1,PaysPilote2  */
 
 
 // chargement des données de l'interface
 let lesLignes = document.getElementById('lesLignes');
 let nom = document.getElementById('nom');
+let logo = document.getElementById('logo');
+let pays = document.getElementById('pays');
+let ecurie = document.getElementById('ecurie');
+let voiture = document.getElementById('voiture');
+let pilote = document.getElementById('pilote');
+let piloted = document.getElementById('pilote2');
+let numPilote1 = document.getElementById('numPilote1');
+let numPilote2 = document.getElementById('numPilote2');
+let natio1 = document.getElementById('paysPilote1');
+let natio2 = document.getElementById('paysPilote2');
+let photo1 = document.getElementById('photo1');
+let photo2 = document.getElementById('photo2');
+
+
 
 nom.innerText = nomEcurie;
+ecurie.innerText = nomEcurie;
+pilote.innerText = prenom1 + ' ' + nomPilote1;
+piloted.innerText = prenom2 + ' ' + nomPilote2;
+numPilote1.innerText = ' ' + idPilote1;
+numPilote2.innerText = ' ' + idPilote2;
+logo.src = '/img/ecurie/' + logoEcurie;
+pays.src = '/img/pays/' + paysEcurie;
+natio1.src = '/img/pays/' + PaysPilote1;
+natio2.src = '/img/pays/' + PaysPilote2;
+photo1.src = '/img/pilote/' + photoPilote;
+photo2.src = '/img/pilote/' + photoPilote1;
+
+voiture.src = '/img/f1/' + imgVoiture;
+
 
 for (const resultat of data) {
     // création d'une ligne

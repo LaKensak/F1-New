@@ -18,7 +18,7 @@ $id = $_GET['id'];
 
 
 $sql = <<<EOD
-   Select nom 
+   Select nom,photo
    from pilote
    where id = :id 
 EOD;
@@ -53,11 +53,35 @@ GROUP BY
 
 EOD;
 
+$sqlPilote = <<<EOD
+    SELECT photo, pays.id as Pays,e.nom as ecuriePilote,pilote.id as numPilote, pays.nom as nomPays, pilote.prenom as prenom
+FROM pilote
+join f1.pays on pilote.idPays = pays.id
+join f1.ecurie e on pilote.idEcurie = e.id
+WHERE pilote.id = :id
+EOD;
+
+$lignePilote = $select->getRow($sqlPilote, ['id' => $id]);
+if (!$lignePilote) {
+    Erreur::envoyerReponse("Votre requête n'est pas valide", 'system');
+}
+$photoPilote = $lignePilote['photo'];
+$paysPilote = $lignePilote['Pays'];
+$ecuriePilote = $lignePilote['ecuriePilote'];
+$numPilote = $lignePilote['numPilote'];
+$nomPays = $lignePilote['nomPays'];
+$prenom = $lignePilote['prenom'];
 $data = json_encode($select->getRows($sql, ['id' => $id]));
 $head = <<<EOD
 <script>
     let data = $data;
     let nomPilote = "$nomPilote";
+    let photoPilote = "$photoPilote";
+    let paysPilote = "$paysPilote";
+    let ecuriePilote = "$ecuriePilote";
+    let numPilote = "$numPilote";
+    let nomPays = "$nomPays";
+    let prenom = "$prenom";
 </script>
 EOD;
 
