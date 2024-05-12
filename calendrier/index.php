@@ -6,7 +6,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/include/autoload.php";
 $select = new Select();
 
 $sql = <<<EOD
-    Select id, date_format(date,'%d/%m') as dateFr, nom, circuit, idPays,
+    Select id, date_format(date,'%d/%m') as dateFr, nom, circuit, imgCircuit, idPays,
           if(exists(select 1  from resultat where idGrandPrix = id), 1 , 0) as nb 
     from grandprix 
     order by date 

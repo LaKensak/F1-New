@@ -1,10 +1,16 @@
 'use strict';
 // Affichage des coureurs dans un tableau triable
 
-/* global data  */
+/* global data */
 
 // chargement des données de l'interface
 let lesLignes = document.getElementById('lesLignes');
+
+// Création de l'image par défaut
+const defaultImg = document.createElement('img');
+defaultImg.src = '/img/pays/erreur.png'; // chemin de l'image par défaut
+defaultImg.alt = 'Default'; // texte alternatif au cas où l'image ne se charge pas
+defaultImg.style.width = '20px'; // ajustez la taille de l'image selon vos besoins
 
 for (const pilote of data) {
     // création d'une ligne
@@ -16,7 +22,7 @@ for (const pilote of data) {
     td.style.textAlign = 'center';
     td.innerText = pilote.place;
 
-    // colonne pour le nom de l'écurie
+    // colonne pour le nom des pilotes
     const nomCell = tr.insertCell();
     nomCell.innerText = pilote.nom;
     nomCell.style.paddingRight = '50px';
@@ -30,15 +36,15 @@ for (const pilote of data) {
     // colonne pour les points par grand prix
     const pointsParGP = pilote.PointParGP.split(' '); // séparation des points par espace
     const tdPointsParGP = tr.insertCell();
-    tdPointsParGP.style.paddingRight = '50px';
+    tdPointsParGP.style.paddingRight = '550px';
+
+
+    // Création d'une cellule pour les images des pays
+    const tdImagesPays = document.createElement('td');
+    tdImagesPays.style.verticalAlign = 'top'; // alignement vertical au-dessus
 
     // Ajout d'un événement de survol à chaque point
     for (const point of pointsParGP) {
-        // Récupérer l'index de ce point
-        const index = pointsParGP.indexOf(point);
-        // Récupérer le pays associé à cet index dans les pays participés
-        const pays = pilote.pays_participes.split(',')[index];
-
         // Création de l'élément span pour afficher le point par grand prix
         const span = document.createElement('span');
         span.innerText = point;
@@ -60,10 +66,17 @@ for (const pilote of data) {
 
         // Création de l'élément img pour afficher l'image du pays associé
         const img = document.createElement('img');
+        const paysIndex = pointsParGP.indexOf(point);
+        const pays = pilote.pays_participes.split(',')[paysIndex];
         img.src = '/img/pays/' + pays + '.png'; // ajustez le chemin en fonction de votre structure de fichiers
         img.alt = pays; // texte alternatif au cas où l'image ne se charge pas
         img.style.width = '20px'; // ajustez la taille de l'image selon vos besoins
         img.style.display = 'none'; // cacher l'image par défaut
+
+        // Vérifier si l'image est trouvée
+        img.onerror = function() {
+            img.src = defaultImg.src; // Si l'image n'est pas trouvée, afficher l'image par défaut
+        };
 
         // Ajouter un événement de survol pour afficher l'image du pays associé
         span.addEventListener('mouseover', function() {
@@ -77,5 +90,7 @@ for (const pilote of data) {
 
         tdPointsParGP.appendChild(span); // ajouter le point par grand prix à la cellule
         tdPointsParGP.appendChild(img); // ajouter l'image du pays à la cellule
+        tdImagesPays.appendChild(img);
     }
+    tr.insertBefore(tdImagesPays, tr.cells[3]);
 }

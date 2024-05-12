@@ -1,98 +1,380 @@
-<body translate="no">
-<div class="preloader">
-    <div class="circle circle1"
-         style="transform: translate3d(0px, 0px, 0px) scale(1.09458, 1.09458); opacity: 1; box-shadow: rgb(252,0,0) 0px 14px 16px 0px;"></div>
-    <div class="circle circle2"
-         style="transform: translate3d(0px, 0px, 0px) scale(1.04722, 1.04722); opacity: 1; box-shadow: rgba(0, 0, 0, 0.4) 0px 9px 12px 0px;"></div>
-    <div class="circle circle3"
-         style="transform: translate3d(0px, 0px, 0px) scale(1.15506, 1.15506); opacity: 1; box-shadow: rgba(133,0,0,0.4) 0px 20px 21px 0px;"><span style="padding-left: 10px; position:relative;top: 35px;"></span></div>
-</div>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        border: none;
-        outline: none;
-        box-sizing: border-box;
-    }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description"
+          content="Formula1, pilotos, equipes,pistas,histórias e informações sobre a Formula 1 no geral">
+    <link rel="stylesheet" href="css/accueil.css"/>
+    <link rel="stylesheet" href="css/style-tablet.css">
+    <link rel="stylesheet" href="css/style-desktop.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
 
-    .preloader {
-        width: 100%;
-        height: 100%;
-        background-color: #ffffff;
-    }
+    <title>Home</title>
+</head>
 
-    .circle {
-        border-radius: 190px;
-        box-shadow: 0 4px 8px rgb(255, 255, 255);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        opacity: 0;
-    }
+<body>
+<aside>
+    <section id="introducao" class="phrases">
+        <h2 class="title">Qu’est-ce que la Formule 1 ?</h2>
+        <p>
+            <em>
+                <q>
+                    Catégorie maximale du sport automobile où les meilleurs pilotes de l'histoire dépassent les
+                    capacités humaines pour atteindre la perfection
+                    <strong>en un seul tour</strong>
+                </q>
+            </em>
+        </p>
+    </section>
 
-    .circle1 {
-        background-color: #d55252;
-        width: 240px;
-        height: 240px;
-        margin-top: -120px;
-        margin-left: -120px;
-    }
+</aside>
+<section id="showromCarros"></section>
+<main>
+    <section id="melhoresPilotos">
+        <h2 class="title">LES MEILLEURS PILOTES</h2>
 
-    .circle2 {
-        background-color: #d55252;
-        width: 170px;
-        height: 170px;
-        margin-top: -85px;
-        margin-left: -85px;
-    }
+        <article>
+            <h3>Ayrton Senna</h3>
+            <div class="fotosPilotos" id="ayrtonSenna"></div>
+            <p>
+                <a href="https://commons.wikimedia.org/wiki/File:Ayrton_Senna_9.jpg" rel="external">
+                    <small>Auteur de l'image</small>
+                </a>
+            </p>
+            <p>
+                Considéré par la plupart comme l'un des meilleurs pilotes de F1 de tous les temps, le <q>Brésilien
+                Ayrton Senn</q> était une légende à ses jours de gloire, avant sa fin tragique au
+                <strong>GP d'Imola 1994.</strong>
+            </p>
+        </article>
 
-    .circle3 {
-        background-color: #d55252;
-        width: 100px;
-        height: 100px;
-        margin-top: -50px;
-        margin-left: -50px;
-    }
-</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script id="rendered-js">
-    var $circles = $('.circle'),
-        tl = new TimelineMax(),
-        random1 = getRandomNumber(),
-        imgUrl1 = '' + random1,
-        image1 = $('<img>');
+        <article>
+            <h3>Lewis Hamilton</h3>
+            <div class="fotosPilotos" id="lewisHamilton"></div>
+            <p>
+                <a
+                        href="https://commons.wikimedia.org/wiki/File:Lewis_Hamilton_2016_Malaysia_1.jpg" rel="external"
+                >
+                    <small>Auteur de l'image</small>
+                </a>
+            <div class="fotosPilotos" id="lewisHamiltonequipe"></div>
+            <p>
+                <a
+                        href="https://commons.wikimedia.org/wiki/File:Lewis_Hamilton_2016_Malaysia_1.jpg" rel="external"
+                >
+                    <small>Auteur de l'image</small>
+                </a>
+            </p>
+            <p>
+                De la nouvelle génération de Formule 1, Sir Hamilton détient le record du plus grand nombre de victoires
+                en F1, après avoir pratiquement
+                <strong>dominé </strong> l'ensemble du sport pendant des années au volant de sa Mercedes.
+            </p>
+        </article>
 
-    function loaderOut() {
-        console.log('L\image est bien charger');
-    }
+        <article>
+            <h3>Michael Schumacher</h3>
+            <div class="fotosPilotos" id="michaelSchumacher"></div>
+            <p>
+                <a href="https://commons.wikimedia.org/wiki/File:Michael_Schumacher_after_2005_United_States_GP_(20413937)_(cropped).jpg"
+                   rel="external">
+                    <small>Auteur de l'image</small>
+                </a>
+            </p>
+            <p>
+                Il a également complètement dominé la F1 dans son ascension, Michael Schumacher était un grand champion
+                qui a conduit sa Ferrari à la gloire 91 fois sur le plus haut podium
+            </p>
+        </article>
 
-    function getRandomNumber() {
-        return Math.floor(Math.random() * 10000);
-    }
+    </section>
 
-    image1.on('load', loaderOut);
-    image1.attr('src', imgUrl1);
 
-    TweenMax.set($circles, {scale: 0});
+    <section>
+        <section>
+            <h2 class="title">PRINCIPALES ÉQUIPES</h2>
+        </section>
+        <section>
+            <section id="melhoresEquipes">
+                <section>
+                    <div class="card " id="ferrariCard">
+                        <div class="logo" id="ferrariLogo"></div>
+                        <p>Ferrari</p>
+                    </div>
+                    <article class="card1" id="ferrariCard1">
+                        <div class="card1-header">
+                            <h3>Ferrari</h3>
+                            <button id="esconderFerrari">
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+                        <img src="img/ferrari-car.webp" alt="Ferrari F1">
+                        <div>
+                            <ul>
+                                <li><strong>Coupes du monde :</strong> 16</li>
+                                <li><strong>Victoires :</strong> 242</li>
+                                <li><strong>PPilote principal : </strong>Michael Schumacher</li>
+                            </ul>
+                            <hr>
+                            <p>L'une des équipes les plus classiques de la Formule 1, Ferrari a marqué son nom dans
+                                l'histoire avec plusieurs périodes de domination totale, notamment entre 1996 et 2004,
+                                où elle a remporté plusieurs championnats avec
+                                <strong>Michael Schumacher.</strong></p>
+                        </div>
+                    </article>
+                </section>
 
-    tl.insert(
-        TweenMax.staggerTo($circles.toArray(), 1, {
-            opacity: 1,
-            scale: 1,
-            ease: Power1.easeIn
-        }, 0.2)
-    );
+                <section>
+                    <div class="card" id="mercedesCard">
+                        <div class="logo" id="mercedesLogo"></div>
+                        <p>Mercedes</p>
+                    </div>
+                    <article class="card1" id="mercedesCard1">
+                        <div class="card1-header">
+                            <h3>Mercedes</h3>
+                            <button id="esconderMercedes">
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+                        <img src="img/mercedes-car.webp" alt="mercedes F1">
+                        <div>
+                            <ul>
+                                <li><strong>Coupes du monde :</strong> 8</li>
+                                <li><strong>Victoires :</strong> 124</li>
+                                <li><strong>Pilote principal :</strong> Lewis Hamilton</li>
+                            </ul>
+                            <hr>
+                            <p>
+                                Reconnue pour sa domination écrasante entre 2014 et 2021, cette équipe a
+                                a construit plusieurs voitures qui ont détruit la concurrence
+                                ainsi que son meilleur pilote,
+                                <strong>Lewis Hamilton</strong>
+                            </p>
+                        </div>
+                    </article>
+                </section>
 
-    tl.insert(
-        TweenMax.staggerTo($circles.toArray(), 0.5, {
-            scale: 1.2,
-            boxShadow: '0 25px 25px rgba(0, 0, 0, 0.4)',
-            repeat: -1,
-            yoyo: true,
-            ease: Power1.easeOut
-        }, 0.2), '-=0.4'
-    );
-</script>
+                <section>
+                    <div class="card" id="mclarenCard">
+                        <div class="logo" id="mclarenLogo"></div>
+                        <p>Mclaren</p>
+                    </div>
+                    <article class="card1" id="mclarenCard1">
+                        <div class="card1-header">
+                            <h3>Mclaren</h3>
+                            <button id="esconderMclaren">
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+                        <img src="img/mclaren-car.webp" alt="Mclaren F1">
+                        <div>
+                            <ul>
+                                <li><strong>Coupes du monde: </strong>8</li>
+                                <li><strong>Victoires: </strong>183</li>
+                                <li><strong>Pilote principal: </strong>Ayrton Senna</li>
+                            </ul>
+                            <hr>
+                            <p>Connue principalement pour ses pilotes, comme Ayrton Senna, Alan Prost et plus récemment
+                                (2022) Lando Norris.
+                                récemment (2022) Lando Norris, cette équipe se distingue par ses voitures toujours
+                                innovantes.
+                                leurs voitures</p>
+                        </div>
+                    </article>
+                </section>
+
+                <section>
+                    <div class="card" id="williamsCard">
+                        <div class="logo" id="williamsLogo"></div>
+                        <p>Williams</p>
+                    </div>
+                    <article class="card1" id="williamsCard1">
+                        <div class="card1-header">
+                            <h3>Williams</h3>
+                            <button id="esconderWilliams">
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+                        <img src="img/williams-car.webp" alt="Williams F1">
+                        <div>
+                            <ul>
+                                <li><strong>Coupes du monde: </strong>9</li>
+                                <li><strong>Victoires: </strong>114</li>
+                                <li><strong>Pilotos principais: </strong>Daemon Hill, Jacques Villeneuve, Alain Prost
+                                </li>
+                            </ul>
+                            <hr>
+                            <p>Williams est l'une des seules équipes sans grande marque automobile à avoir réussi en
+                                Formule 1.
+                                L'équipe Williams a connu le succès en Formule 1. Avec son propriétaire, Frank Williams,
+                                elle a mené et dominé le sport pendant plusieurs années.
+                                années dans le sport. Cependant, depuis les années 2000, la situation n'est plus la
+                                même</p>
+                        </div>
+                    </article>
+                </section>
+            </section>
+        </section>
+    </section>
+
+    <section id="pistas">
+
+        <h2 class="title">DES PISTES LÉGENDAIRES</h2>
+        <p>Outre les voitures les plus rapides et les meilleurs pilotes, la Formule 1 a couru et court encore sur les
+            meilleurs circuits routiers et fermés du sport automobile.
+            circuits routiers et fermés du sport automobile</p>
+        <article>
+            <h3>Spa-Francorchamps</h3>
+            <img src="./img/spa.png" alt="Spa Francorchamps">
+            <p>Avec des virages à grande vitesse et une ligne droite précédée d'une courbe redoutée <a
+                    href="https://motorsport.uol.com.br/f1/news/saiba-por-que-a-eau-rouge-e-a-curva-preferida-dos-pilotos-809878/809878/"
+                    rel="external"><strong>Eau Rouge</strong></a></p>
+        </article>
+
+        <article class="alinhamentoDireita">
+            <h3>Nürburgring</h3>
+            <img src="./img/nurburing.png" alt="Nürburgring">
+            <p><a href="https://commons.wikimedia.org/wiki/File:Circuit_N%C3%BCrburgring-2002-GP.svg" rel="external"
+            ><small>Auteur de l'image</small></a></p>
+            <p>Les virages dangereux et les ondulations qui font voler les voitures ont marqué les dernières décennies
+                des pilotes de Formule 1.
+                Formule 1, ce circuit est connu pour le défi qu'il représente : garder la voiture sur la piste.</p>
+        </article>
+
+        <article>
+            <h3>Mônaco</h3>
+            <img src="./img/monaco.png" alt="Mônaco">
+            <p>Les rues de la principauté sont fréquemment fermées pour accueillir diverses catégories de courses.
+                La principauté accueille diverses catégories de courses, la Formule 1 étant l'événement principal.</p>
+        </article>
+    </section>
+
+    <section id="historias">
+        <section>
+            <h2><em>HISTOIRES</em></h2>
+            <p class="phrases"><em><q>En tant que sport automobile, la Formule 1 a connu de nombreuses histoires et
+                rivalités passionnantes
+                des rivalités qui ont dépassé le cadre de la piste entre les meilleurs pilotes du monde</q></em></p>
+        </section>
+
+        <article>
+            <h3>Hamilton vs Max Verstappen <br> (2021)</h3>
+            <img src="./img/lewis-max.jpg" alt="Hamilton e Verstappen">
+            <p>L'histoire la plus actuelle d'une rivalité est justement celle de <strong>Hamilton vs Verstappen</strong>,
+                qui se sont battus pour chaque point gagné cette saison.
+                se sont battus sur la piste pour chaque point gagné lors de la saison 2021 de la F1. C'est précisément
+                cette année-là qu'ils ont eu plusieurs
+                plusieurs rencontres et désaccords sur la piste, notamment lors de l'épreuve des <a
+                        href="https://www.youtube.com/watch?v=oIKel6jVD3Q"
+                        rel="external">Lewis frappe Max</a> lors du Grand Prix de Grande-Bretagne 2021. Le titre s'est
+                joué lors de la dernière course de l'année, où les deux pilotes étaient à égalité de points.
+                Le titre s'est joué lors de la dernière course de l'année, où les deux pilotes ont été à égalité de
+                points, ce qui n'arrive presque jamais en F1.</p>
+            <hr>
+            <p>
+                <a href="https://desporto.sapo.pt/motores/artigos/max-verstappen-vs-lewis-hamilton-a-rivalidade-que-reacendeu-a-chama-da-formula-1"
+                   rel="external">Cliquez ici</a> si vous voulez en savoir plus sur cette saison historique
+                saison historique</p>
+        </article>
+
+        <article>
+            <h3>Senna vs Prost (1989)</h3>
+            <img src="./img/senna-prost.jpg" alt="Senna versus Prost">
+            <p>C'est un classique : <strong>Senna vs Prost</strong> a été la dernière (disons) rivalité avec une haine
+                incommensurable.
+                haine incommensurable. On peut dire que tout a commencé lorsque Mclaren a construit la meilleure voiture
+                sur la grille,
+                et y a placé les meilleurs pilotes, ce qui a conduit au duo le plus destructeur de tous les temps en
+                Formule 1.
+                Formule 1. Cependant, Senna et Prost ont développé une rivalité inégalée qui a divisé l'équipe et a
+                conduit à plusieurs épisodes embarrassants et épiques sur la piste.
+                plusieurs épisodes embarrassants et épiques sur la piste. Tout a basculé lorsque les deux hommes se sont
+                heurtés lors de l'avant-dernière course de l'année.
+                L'avant-dernière course de l'année, et que s'est-il passé ensuite ? Une longue histoire...</p>
+            <hr>
+            <p>
+                <a href="https://ge.globo.com/motor/formula-1/blogs/voando-baixo/post/2020/04/03/senna-x-prost-a-maior-rivalidade-da-historia-do-esporte-mundial.ghtml"
+                   rel="external">Cliquez ici</a> pour en savoir plus sur tout ce gâchis</p>
+        </article>
+
+        <article>
+            <h3>James Hunt vs Nick Lauda (1975)</h3>
+            <img src="./img/james-nick.jpg" alt="James Hunt versus Nick Lauda">
+            <p><a href="https://commons.wikimedia.org/wiki/File:Hunt_and_Lauda_at_1975_Dutch_Grand_Prix.jpg"><small>L'auteur
+                de l'image</small></a></p>
+            <p>Une autre course épique classique entre deux pilotes aux compétences hors normes, à une époque où deux à
+                trois pilotes mouraient au cours d'une saison de Formule 1.
+                trois pilotes mouraient au cours d'une saison de Formule 1, le sport était alors dangereux et seuls les
+                plus courageux affrontaient la terreur de conduire à plus de 200 kilomètres à l'heure dans des voitures
+                peu sûres.
+                de conduire à plus de 200 kilomètres à l'heure dans des voitures peu sûres. C'est dans ce contexte que
+                James et Nick
+                que James et Nick se sont livrés pendant des années à des querelles légendaires, même après l'arrêt de
+                la compétition. <a
+                        href="https://www.grandepremio.com.br/f1/noticias/na-garagem-niki-lauda-preso-bola-fogo-acidente-terrivel-gp-da-alemanha/"
+                        rel="external"><strong>Le grand accident de Nick Lauda</strong></a>qui a marqué
+                comment ces deux pilotes allaient s'affronter même à l'approche de la mort</p>
+            <hr>
+            <p>
+                <a href="https://ge.globo.com/motor/formula-1/blogs/f1-memoria/post/2020/06/22/james-hunt-derrotou-favorito-niki-lauda-e-deu-a-hesketh-historica-vitoria-na-holanda-em-1975.ghtml"
+                   rel="external">Cliquez ici</a> pour en savoir plus sur cette rivalité</p>
+        </article>
+
+        <article style="margin: 0 auto; border-radius: 5px 5px 0 0;">
+            <h3>&#x2728 Vous voulez en savoir plus ?</h3>
+            <p>Intéressé par d'autres histoires comme celle-ci ? <a
+                    href="https://youtube.com/playlist?list=PLtbXKJFSQBWD3u6B8F8W8ieGcQpf20SIM" rel="external"
+            >Cliquez Ici</a> cette superbe playlist qui nous raconte quelques histoires épiques de la
+                Formule 1</p>
+        </article>
+
+    </section>
+</main>
+
 </body>
+
+<script>
+    const ferrariCard = document.querySelector('#ferrariCard');
+    const ferrariCard1 = document.querySelector('#ferrariCard1');
+    ferrariCard.addEventListener('click', () => {
+        ferrariCard1.style.display = 'flex';
+    });
+    const esconderFerrari = document.querySelector('#esconderFerrari');
+    esconderFerrari.addEventListener('click', () => esconderCard1(ferrariCard1));
+
+    const mercedesCard = document.querySelector('#mercedesCard');
+    const mercedesCard1 = document.querySelector('#mercedesCard1');
+    mercedesCard.addEventListener(
+        'click',
+        () => (mercedesCard1.style.display = 'flex')
+    );
+    const esconderMercedes = document.querySelector('#esconderMercedes');
+    esconderMercedes.addEventListener('click', () => esconderCard1(mercedesCard1));
+
+    const mclarenCard = document.querySelector('#mclarenCard');
+    const mclarenCard1 = document.querySelector('#mclarenCard1');
+    mclarenCard.addEventListener('click', () => mostrarCard(mclarenCard1));
+    const esconderMclaren = document.querySelector('#esconderMclaren');
+    esconderMclaren.addEventListener('click', () => esconderCard1(mclarenCard1));
+
+    const williamsCard = document.querySelector('#williamsCard');
+    const williamsCard1 = document.querySelector('#williamsCard1');
+    williamsCard.addEventListener('click', () => mostrarCard(williamsCard1));
+    const esconderWilliams = document.querySelector('#esconderWilliams');
+    esconderWilliams.addEventListener('click', () => esconderCard1(williamsCard1));
+
+    function mostrarCard(card) {
+        card.style.display = 'flex';
+    }
+
+    function esconderCard1(card) {
+        card.style.display = 'none';
+    }
+
+
+</script>
+
+</html>

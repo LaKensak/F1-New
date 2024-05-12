@@ -42,7 +42,6 @@ for (const resultat of data) {
     const tr = lesLignes.insertRow();
     tr.style.lineHeight = '2.5rem';
 
-
     // colonne pour la date
     let td = tr.insertCell();
     td.style.textAlign = 'center';
@@ -63,6 +62,7 @@ for (const resultat of data) {
     td.style.textAlign = 'right';
     td.style.paddingRight = '50px';
     td.innerText = resultat.point;
+
 
 }
 

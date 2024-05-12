@@ -19,6 +19,8 @@ EOD;
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
             crossorigin="anonymous">
     </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -52,50 +54,12 @@ EOD;
             document.getElementById('pied').style.visibility = 'visible';
         }
 
-        function test() {
-            let tabsNewAnim = $('#navbarSupportedContent');
-            let selectorNewAnim = $('#navbarSupportedContent').find('li').length;
-            let activeItemNewAnim = tabsNewAnim.find('.active');
-            let activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
-            let activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
-            let itemPosNewAnimTop = activeItemNewAnim.position();
-            let itemPosNewAnimLeft = activeItemNewAnim.position();
-            $('.hori-selector').css({
-                'top': itemPosNewAnimTop.top + 'px',
-                'left': itemPosNewAnimLeft.left + 'px',
-                'height': activeWidthNewAnimHeight + 'px',
-                'width': activeWidthNewAnimWidth + 'px'
-            });
-            $('#navbarSupportedContent').on('click', 'li', function (e) {
-                $('#navbarSupportedContent ul li').removeClass('active');
-                $(this).addClass('active');
-                let activeWidthNewAnimHeight = $(this).innerHeight();
-                let activeWidthNewAnimWidth = $(this).innerWidth();
-                let itemPosNewAnimTop = $(this).position();
-                let itemPosNewAnimLeft = $(this).position();
-                $('.hori-selector').css({
-                    'top': itemPosNewAnimTop.top + 'px',
-                    'left': itemPosNewAnimLeft.left + 'px',
-                    'height': activeWidthNewAnimHeight + 'px',
-                    'width': activeWidthNewAnimWidth + 'px'
-                });
-            });
-        }
 
-        $(document).ready(function () {
-            setTimeout(function () {
-                test();
-            });
-        });
-        $(window).on('resize', function () {
-            setTimeout(function () {
-                test();
-            }, 500);
-        });
-        $('.navbar-toggler').click(function () {
-            $('.navbar-collapse').slideToggle(300);
-            setTimeout(function () {
-                test();
+
+        $(document).ready(function() {
+            $('.navbar-toggler').click(function() {
+                $('.navbar-collapse').toggleClass('show');
+                $(this).toggleClass('collapsed');
             });
         });
 
@@ -105,34 +69,42 @@ EOD;
 <body>
 <div class="container-fluid d-flex flex-column p-0 h-100">
     <header>
-        <nav class="navbar navbar-expand-custom navbar-mainbg">
-            <a class="navbar-brand navbar-logo" href=".."><span><img src="/img/f1_logo.svg" alt="Formula 1"></span></a>
-            <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <i class="bi bi-list"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <div class="hori-selector">
-                        <div class="left"></div>
-                        <div class="right"></div>
+        <nav class="bg-red-700">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="w-20" src="/img/logo.svg" alt="Logo">
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="ml-10 flex items-baseline space-x-4">
+                                <a href=".." class="text-white-300 hover:bg-white-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Accueil</a>
+
+                                <a href="/calendrier" class="text-white-300 hover:bg-white-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendrier GP</a>
+
+                                <a href="/classementpilote" class="text-white-300 hover:bg-white-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Classement Pilotes</a>
+
+                                <a href="/classementecurie" class="text-white-300 hover:bg-white-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Classement Ecuries</a>
+
+                            </div>
+                        </div>
                     </div>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="/calendrier"><i class="fas fa-tachometer-alt"></i>Calendrier GP</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/classementpilote"><i class="far fa-address-book"></i>Classement Pilotes</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="/classementecurie"><i class="far fa-clone"></i>Classement Ecuries</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="/classementdetailleecurie"><i class="far fa-calendar-alt"></i>Classement
-                            écuries</a>
-                    </li>
-                </ul>
+                </div>
+            </div>
+
+            <div class="md:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href=".." class="text-white-300 hover:bg-white-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Accueil</a>
+
+                    <a href="/calendrier" class="text-white-300 hover:bg-white-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendrier GP</a>
+
+                    <a href="/classementpilote" class="text-white-300 hover:bg-white-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Classement Pilotes</a>
+
+                    <a href="/classementecurie" class="text-white-300 hover:bg-white-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Classement Ecuries</a>
+                </div>
             </div>
         </nav>
+
     </header>
     <main>
         <div class="my-1" id="msg"></div>
@@ -148,7 +120,10 @@ EOD;
         ?>
     </main>
     <footer id="pied">
-        <div>© 2024 Moubarak</div>
+        <p>&copy L'Équipe des SLAM Saint-Remi</p>
+        <ul>
+            <li><a href="https://github.com/LaKensak" rel="author">Github</a></li>
+        </ul>
     </footer>
 </div>
 </body>

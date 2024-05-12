@@ -6,8 +6,6 @@ require $_SERVER['DOCUMENT_ROOT'] . "/include/autoload.php";
 $retour = "/";
 
 $select = new Select();
-
-
 $sql = <<<EOD
 SELECT
     pilote.nom,
@@ -39,7 +37,6 @@ GROUP BY
     pilote.id
 ORDER BY
     points DESC;
-
 EOD;
 
 
