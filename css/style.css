@@ -199,6 +199,10 @@ main {
     border: solid 1px #1d1d1d;
 }
 
+.points-par-gp {
+    width: 200px; /* Ajustez la largeur selon vos besoins */
+}
+
 #voiture {
     align-items: flex-end;
 }

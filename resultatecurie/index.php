@@ -16,53 +16,22 @@ if ($id === false) {
 
 $id = $_GET['id'];
 
-
-$sql = <<<EOD
-   Select nom
-   from ecurie
-   where id = :id 
-EOD;
-$select = new Select();
-$ligne = $select->getRow($sql, ['id' => $id]);
-if (!$ligne) {
+$nomEcurie = gp::getNomEcurie($id);
+if (!$nomEcurie) {
     Erreur::envoyerReponse("Votre requête n'est pas valide", 'system');
 }
 
 
-// Récupération  des coureurs : licence, nom prenom, sexe, dateNaissanceFr au format fr, idCategorie, nomClub
-$select = new Select();
-$nomEcurie = $ligne['nom'];
-$sql = <<<EOD
-     SELECT DATE_FORMAT(date,'%d/%m/%Y') as dateFr, grandprix.nom,  SUM(resultat.point) as point, grandprix.idPays
-                FROM resultat
-                JOIN grandprix ON resultat.idGrandprix = grandprix.id
-                JOIN pilote ON resultat.idPilote = pilote.id
-                WHERE idEcurie = :id
-                GROUP BY grandprix.date, grandprix.nom
-EOD;
-$ligne = $select->getRows($sql, ['id' => $id]);
+$ligne = gp::getClassementE($id);
 
-$sqlEcurie = <<<EOD
-        SELECT logo,p.id as Pays,imgVoiture,pilote.nom as nomPilote, pilote.prenom,photo,pilote.id as idPilote,pilote.idPays as paysPilote
-        FROM ecurie
-        join pays p on ecurie.idPays = p.id
-        join pilote on ecurie.id = pilote.idEcurie
-        WHERE ecurie.id = :id
-EOD;
+$pilotesData = gp::getPilotesEcurie($id);
 
-$lignesPilotes = $select->getRows($sqlEcurie, ['id' => $id]);
+$pilote1 = $pilotesData['pilote1'];
+$pilote2 = $pilotesData['pilote2'];
 
-if (count($lignesPilotes) < 2) {
-    Erreur::envoyerReponse("Il n'y a pas suffisamment de pilotes dans cette écurie", 'system');
-}
-
-$pilote1 = $lignesPilotes[0];
-$pilote2 = $lignesPilotes[1];
-
-$logoEcurie = $pilote1['logo']; // Utilisation de pilote1 pour le logo
-$paysEcurie = $pilote1['Pays']; // Utilisation de pilote1 pour le pays
-$photoPilote = $pilote1['photo']; // Utilisation de pilote1 pour la photo
-
+$logoEcurie = $pilote1['logo'];
+$paysEcurie = $pilote1['Pays'];
+$photoPilote = $pilote1['photo'];
 
 $nomPilote1 = $pilote1['nomPilote'];
 $prenom1 = $pilote1['prenom'];
@@ -73,11 +42,12 @@ $nomPilote2 = $pilote2['nomPilote'];
 $prenom2 = $pilote2['prenom'];
 $idPilote2 = $pilote2['idPilote'];
 $PaysPilote2 = $pilote2['paysPilote'];
-$photoPilote1 = $pilote2['photo']; // Utilisation de pilote1 pour la photo
+$photoPilote1 = $pilote2['photo'];
 
-$imgVoiture = $pilote1['imgVoiture']; // Utilisation de pilote1 pour l'image de la voiture
+$imgVoiture = $pilote1['imgVoiture'];
 
-$data = json_encode($select->getRows($sql, ['id' => $id]));
+$data = json_encode($ligne);
+
 $head = <<<EOD
 <script>
     let data = $data;

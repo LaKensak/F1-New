@@ -14,6 +14,7 @@ for (const grandPrix of data) {
     img.src = '/img/pays/' + grandPrix.idPays + '.png';
     img.alt = grandPrix.nomPays;
     img.style.verticalAlign = 'middle';
+    img.style.border = "solid 1px #1d1d1d";
     tr.insertCell().appendChild(img);
 
     tr.insertCell().innerText = grandPrix.nom; // colonne pour le nom

@@ -12,6 +12,7 @@ defaultImg.src = '/img/pays/erreur.png'; // chemin de l'image par défaut
 defaultImg.alt = 'Default'; // texte alternatif au cas où l'image ne se charge pas
 defaultImg.style.width = '20px'; // ajustez la taille de l'image selon vos besoins
 
+
 for (const pilote of data) {
     // création d'une ligne
     const tr = lesLignes.insertRow();
@@ -70,8 +71,9 @@ for (const pilote of data) {
         const pays = pilote.pays_participes.split(',')[paysIndex];
         img.src = '/img/pays/' + pays + '.png'; // ajustez le chemin en fonction de votre structure de fichiers
         img.alt = pays; // texte alternatif au cas où l'image ne se charge pas
-        img.style.width = '20px'; // ajustez la taille de l'image selon vos besoins
-        img.style.display = 'none'; // cacher l'image par défaut
+        img.style.width = '25px'; // ajustez la taille de l'image selon vos besoins
+        img.style.display = 'none';
+        img.style.border = "solid 1px #1d1d1d";// cacher l'image par défaut
 
         // Vérifier si l'image est trouvée
         img.onerror = function() {

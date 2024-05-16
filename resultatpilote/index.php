@@ -17,61 +17,28 @@ if ($id === false) {
 $id = $_GET['id'];
 
 
-$sql = <<<EOD
-   Select nom,photo
-   from pilote
-   where id = :id 
-EOD;
-$select = new Select();
-$ligne = $select->getRow($sql, ['id' => $id]);
-if (!$ligne) {
+
+$nomPilote = gp::getNomPilote($id);
+if (!$nomPilote) {
     Erreur::envoyerReponse("Votre requête n'est pas valide", 'system');
 }
 
-
 // Récupération  des coureurs : licence, nom prenom, sexe, dateNaissanceFr au format fr, idCategorie, nomClub
-$select = new Select();
-$nomPilote = $ligne['nom'];
-$sql = <<<EOD
-     SELECT
-    date_format(date,'%d/%m') as dateFr,
-    gp.nom AS nomGP,
-    p.nom AS Pilote,  -- Choisissez MIN() ou MAX() pour choisir un pilote arbitrairement
-    p.idEcurie AS Écurie,  -- Choisissez MIN() ou MAX() pour choisir une écurie arbitrairement
-    r.place AS Place,
-    r.point AS Points
-FROM
-    resultat r
-JOIN
-    grandprix gp ON r.idGrandPrix = gp.id
-JOIN
-    pilote p ON r.idPilote = p.id
-WHERE
-    p.id = :id
-GROUP BY
-    gp.nom;
+$ligne = gp::getClassementP($id);
 
-EOD;
 
-$sqlPilote = <<<EOD
-    SELECT photo, pays.id as Pays,e.nom as ecuriePilote,pilote.id as numPilote, pays.nom as nomPays, pilote.prenom as prenom
-FROM pilote
-join pays on pilote.idPays = pays.id
-join ecurie e on pilote.idEcurie = e.id
-WHERE pilote.id = :id
-EOD;
-
-$lignePilote = $select->getRow($sqlPilote, ['id' => $id]);
+$lignePilote = gp::getPilotes($id);
 if (!$lignePilote) {
     Erreur::envoyerReponse("Votre requête n'est pas valide", 'system');
 }
+
 $photoPilote = $lignePilote['photo'];
 $paysPilote = $lignePilote['Pays'];
 $ecuriePilote = $lignePilote['ecuriePilote'];
 $numPilote = $lignePilote['numPilote'];
 $nomPays = $lignePilote['nomPays'];
 $prenom = $lignePilote['prenom'];
-$data = json_encode($select->getRows($sql, ['id' => $id]));
+$data = json_encode($ligne);
 $head = <<<EOD
 <script>
     let data = $data;

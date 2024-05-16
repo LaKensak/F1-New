@@ -21,6 +21,7 @@ for (const pilote of data) {
     img.src = '/img/pays/' + pilote.idPays + '.png';
     img.title = pilote.nomPays;
     img.style.verticalAlign = 'middle';
+    img.style.border = "solid 1px #1d1d1d";
     tr.insertCell().appendChild(img);
 
     tr.insertCell().innerText = pilote.id + ' ' + pilote.piloteNom;
