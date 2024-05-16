@@ -17,18 +17,18 @@ $select = new Select();
     pays.nom AS nomPays,
     e.nom AS nomEcurie,
     (SELECT SUM(point)
-     FROM classementPilote
-     WHERE classementPilote.id = pilote.id
-     GROUP BY classementPilote.id) AS point,
+     FROM classementpilote
+     WHERE classementpilote.id = pilote.id
+     GROUP BY classementpilote.id) AS point,
     (SELECT COUNT(*) + 1
      FROM (SELECT SUM(point) AS total_points
-           FROM classementPilote
+           FROM classementpilote
            GROUP BY id) AS p
      WHERE total_points > point) AS place
 FROM
     pilote
 JOIN
-    f1.ecurie e ON pilote.idEcurie = e.id
+    ecurie e ON pilote.idEcurie = e.id
 JOIN
     pays ON pilote.idPays = pays.id
 ORDER BY

@@ -139,14 +139,7 @@ body {
 	margin-top: 100px;
 }
 
-#showromCarros {
-	background: url("../img/f1Car.webp") center top no-repeat fixed;
-	background-size: cover;
-	background-position: center;
-	box-shadow: inset 6px 6px 13px 0px black;
-	position: relative;
-	right: 200px
-}
+
 
 #melhoresPilotos p {
 	margin-left: 10px;

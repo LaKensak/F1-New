@@ -15,7 +15,7 @@ SELECT
         SELECT COUNT(*) + 1
         FROM (
             SELECT SUM(point) AS points
-            FROM classementEcurie
+            FROM classementecurie
             GROUP BY id
         ) AS e
         WHERE points > SUM(resultat.point)

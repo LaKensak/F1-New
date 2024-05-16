@@ -5,7 +5,7 @@ class gp
 
     public static function getNomEcurie($id)
     {
-        $sql = "SELECT nom FROM Ecurie WHERE id = :id";
+        $sql = "SELECT nom FROM ecurie WHERE id = :id";
         $select = new Select();
         $ligne = $select->getRow($sql, ['id' => $id]);
         return $ligne ? $ligne['nom'] : null;
@@ -29,12 +29,12 @@ class gp
                    idPays,
                    pays.nom as nomPays,
                    (SELECT SUM(point)
-                    FROM classementPilote
+                    FROM classementpilote
                     WHERE idEcurie = ecurie.id
                     GROUP BY idEcurie) AS point,
                    (SELECT COUNT(*) + 1
                     FROM (SELECT SUM(point) AS total_points
-                          FROM classementPilote
+                          FROM classementpilote
                           GROUP BY idEcurie) AS p
                     WHERE total_points > point) AS place
             FROM ecurie

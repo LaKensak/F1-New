@@ -28,9 +28,9 @@ piloted.innerText = prenom2 + ' ' + nomPilote2;
 numPilote1.innerText = ' ' + idPilote1;
 numPilote2.innerText = ' ' + idPilote2;
 logo.src = '/img/ecurie/' + logoEcurie;
-pays.src = '/img/pays/' + paysEcurie;
-natio1.src = '/img/pays/' + PaysPilote1;
-natio2.src = '/img/pays/' + PaysPilote2;
+pays.src = '/img/pays/' + paysEcurie + '.png';
+natio1.src = '/img/pays/' + PaysPilote1 + '.png';
+natio2.src = '/img/pays/' + PaysPilote2 + '.png';
 photo1.src = '/img/pilote/' + photoPilote;
 photo2.src = '/img/pilote/' + photoPilote1;
 

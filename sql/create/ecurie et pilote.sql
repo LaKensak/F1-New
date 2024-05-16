@@ -1,4 +1,4 @@
-use f1;
+
 
 delete from pilote;
 delete from ecurie;

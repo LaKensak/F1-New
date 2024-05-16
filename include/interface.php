@@ -11,7 +11,7 @@ EOD;
 <!DOCTYPE HTML>
 <html lang="fr">
 <head>
-    <title>Formation Web</title>
+    <title>F1 - GP</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script
@@ -20,7 +20,7 @@ EOD;
             crossorigin="anonymous">
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <link rel="icon" href="../img/f1_logo_red.svg"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -55,15 +55,6 @@ EOD;
         }
 
 
-
-        $(document).ready(function() {
-            $('.navbar-toggler').click(function() {
-                $('.navbar-collapse').toggleClass('show');
-                $(this).toggleClass('collapsed');
-            });
-        });
-
-
     </script>
 </head>
 <body>
@@ -74,18 +65,23 @@ EOD;
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
-                            <img class="w-20" src="/img/logo.svg" alt="Logo">
+                            <a href="..">
+                                <img class="w-20" src="/img/logo.svg" alt="Logo">
+                            </a>
                         </div>
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
-                                <a href=".." class="text-white-300 hover:bg-white-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Accueil</a>
-
-                                <a href="/calendrier" class="text-white-300 hover:bg-white-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendrier GP</a>
-
-                                <a href="/classementpilote" class="text-white-300 hover:bg-white-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Classement Pilotes</a>
-
-                                <a href="/classementecurie" class="text-white-300 hover:bg-white-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Classement Ecuries</a>
-
+                                <a href=".."
+                                   class="text-white hover:bg-white-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Accueil</a>
+                                <a href="/calendrier"
+                                   class="text-white hover:bg-white-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendrier
+                                    GP</a>
+                                <a href="/classementpilote"
+                                   class="text-white hover:bg-white-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Classement
+                                    Pilotes</a>
+                                <a href="/classementecurie"
+                                   class="text-white hover:bg-white-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Classement
+                                    Ecuries</a>
                             </div>
                         </div>
                     </div>
@@ -94,13 +90,20 @@ EOD;
 
             <div class="md:hidden" id="mobile-menu">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <a href=".." class="text-white-300 hover:bg-white-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Accueil</a>
+                    <a href=".."
+                       class="text-white-300 hover:bg-white-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Accueil</a>
 
-                    <a href="/calendrier" class="text-white-300 hover:bg-white-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendrier GP</a>
+                    <a href="/calendrier"
+                       class="text-white-300 hover:bg-white-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendrier
+                        GP</a>
 
-                    <a href="/classementpilote" class="text-white-300 hover:bg-white-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Classement Pilotes</a>
+                    <a href="/classementpilote"
+                       class="text-white-300 hover:bg-white-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Classement
+                        Pilotes</a>
 
-                    <a href="/classementecurie" class="text-white-300 hover:bg-white-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Classement Ecuries</a>
+                    <a href="/classementecurie"
+                       class="text-white-300 hover:bg-white-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Classement
+                        Ecuries</a>
                 </div>
             </div>
         </nav>

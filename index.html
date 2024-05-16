@@ -11,7 +11,46 @@
     <link rel="stylesheet" href="css/style-desktop.css">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <style>
+        @media screen and (min-width: 992px) {
+            canvas {
+                border-radius: 5px;
+                background-color: transparent;
+                height: fit-content;
+                display: block;
+            }
 
+            .container {
+                border-radius: 10px;
+                background-color: transparent;
+                border: 1px solid transparent;
+                overflow: hidden;
+            }
+
+            .container > div {
+                height: 200px;
+            }
+        }
+        @media screen and (min-width: 768px) and (max-width: 991.98px) {
+            canvas {
+                border-radius: 5px;
+                height: fit-content;
+                background-color: transparent;
+                display: block;
+            }
+
+            .container {
+                border-radius: 10px;
+                background-color: transparent;
+                border: 1px solid transparent;
+                overflow: hidden;
+            }
+
+            .container > div {
+                height: 200px;
+            }
+        }
+    </style>
     <title>Home</title>
 </head>
 
@@ -31,7 +70,20 @@
     </section>
 
 </aside>
-<section id="showromCarros"></section>
+
+<div id="controls" class="btn-group btn-group-toggle">
+    <button id="zoomIn" class="btn btn-secondary btn-light">Zoom +</button>
+    <button id="zoomOut" class="btn btn-secondary btn-light">Zoom -</button>
+</div>
+
+<div class="container">
+    <canvas id="renderCanvas"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/loaders/GLTFLoader.js"></script>
+
+<script src="GLTF.js">
+</script>
 <main>
     <section id="melhoresPilotos">
         <h2 class="title">LES MEILLEURS PILOTES</h2>
@@ -92,133 +144,7 @@
 
     </section>
 
-
-    <section>
-        <section>
-            <h2 class="title">PRINCIPALES ÉQUIPES</h2>
-        </section>
-        <section>
-            <section id="melhoresEquipes">
-                <section>
-                    <div class="card " id="ferrariCard">
-                        <div class="logo" id="ferrariLogo"></div>
-                        <p>Ferrari</p>
-                    </div>
-                    <article class="card1" id="ferrariCard1">
-                        <div class="card1-header">
-                            <h3>Ferrari</h3>
-                            <button id="esconderFerrari">
-                                <span class="material-symbols-outlined">close</span>
-                            </button>
-                        </div>
-                        <img src="img/ferrari-car.webp" alt="Ferrari F1">
-                        <div>
-                            <ul>
-                                <li><strong>Coupes du monde :</strong> 16</li>
-                                <li><strong>Victoires :</strong> 242</li>
-                                <li><strong>PPilote principal : </strong>Michael Schumacher</li>
-                            </ul>
-                            <hr>
-                            <p>L'une des équipes les plus classiques de la Formule 1, Ferrari a marqué son nom dans
-                                l'histoire avec plusieurs périodes de domination totale, notamment entre 1996 et 2004,
-                                où elle a remporté plusieurs championnats avec
-                                <strong>Michael Schumacher.</strong></p>
-                        </div>
-                    </article>
-                </section>
-
-                <section>
-                    <div class="card" id="mercedesCard">
-                        <div class="logo" id="mercedesLogo"></div>
-                        <p>Mercedes</p>
-                    </div>
-                    <article class="card1" id="mercedesCard1">
-                        <div class="card1-header">
-                            <h3>Mercedes</h3>
-                            <button id="esconderMercedes">
-                                <span class="material-symbols-outlined">close</span>
-                            </button>
-                        </div>
-                        <img src="img/mercedes-car.webp" alt="mercedes F1">
-                        <div>
-                            <ul>
-                                <li><strong>Coupes du monde :</strong> 8</li>
-                                <li><strong>Victoires :</strong> 124</li>
-                                <li><strong>Pilote principal :</strong> Lewis Hamilton</li>
-                            </ul>
-                            <hr>
-                            <p>
-                                Reconnue pour sa domination écrasante entre 2014 et 2021, cette équipe a
-                                a construit plusieurs voitures qui ont détruit la concurrence
-                                ainsi que son meilleur pilote,
-                                <strong>Lewis Hamilton</strong>
-                            </p>
-                        </div>
-                    </article>
-                </section>
-
-                <section>
-                    <div class="card" id="mclarenCard">
-                        <div class="logo" id="mclarenLogo"></div>
-                        <p>Mclaren</p>
-                    </div>
-                    <article class="card1" id="mclarenCard1">
-                        <div class="card1-header">
-                            <h3>Mclaren</h3>
-                            <button id="esconderMclaren">
-                                <span class="material-symbols-outlined">close</span>
-                            </button>
-                        </div>
-                        <img src="img/mclaren-car.webp" alt="Mclaren F1">
-                        <div>
-                            <ul>
-                                <li><strong>Coupes du monde: </strong>8</li>
-                                <li><strong>Victoires: </strong>183</li>
-                                <li><strong>Pilote principal: </strong>Ayrton Senna</li>
-                            </ul>
-                            <hr>
-                            <p>Connue principalement pour ses pilotes, comme Ayrton Senna, Alan Prost et plus récemment
-                                (2022) Lando Norris.
-                                récemment (2022) Lando Norris, cette équipe se distingue par ses voitures toujours
-                                innovantes.
-                                leurs voitures</p>
-                        </div>
-                    </article>
-                </section>
-
-                <section>
-                    <div class="card" id="williamsCard">
-                        <div class="logo" id="williamsLogo"></div>
-                        <p>Williams</p>
-                    </div>
-                    <article class="card1" id="williamsCard1">
-                        <div class="card1-header">
-                            <h3>Williams</h3>
-                            <button id="esconderWilliams">
-                                <span class="material-symbols-outlined">close</span>
-                            </button>
-                        </div>
-                        <img src="img/williams-car.webp" alt="Williams F1">
-                        <div>
-                            <ul>
-                                <li><strong>Coupes du monde: </strong>9</li>
-                                <li><strong>Victoires: </strong>114</li>
-                                <li><strong>Pilotos principais: </strong>Daemon Hill, Jacques Villeneuve, Alain Prost
-                                </li>
-                            </ul>
-                            <hr>
-                            <p>Williams est l'une des seules équipes sans grande marque automobile à avoir réussi en
-                                Formule 1.
-                                L'équipe Williams a connu le succès en Formule 1. Avec son propriétaire, Frank Williams,
-                                elle a mené et dominé le sport pendant plusieurs années.
-                                années dans le sport. Cependant, depuis les années 2000, la situation n'est plus la
-                                même</p>
-                        </div>
-                    </article>
-                </section>
-            </section>
-        </section>
-    </section>
+    
 
     <section id="pistas">
 
@@ -336,45 +262,5 @@
 
 </body>
 
-<script>
-    const ferrariCard = document.querySelector('#ferrariCard');
-    const ferrariCard1 = document.querySelector('#ferrariCard1');
-    ferrariCard.addEventListener('click', () => {
-        ferrariCard1.style.display = 'flex';
-    });
-    const esconderFerrari = document.querySelector('#esconderFerrari');
-    esconderFerrari.addEventListener('click', () => esconderCard1(ferrariCard1));
-
-    const mercedesCard = document.querySelector('#mercedesCard');
-    const mercedesCard1 = document.querySelector('#mercedesCard1');
-    mercedesCard.addEventListener(
-        'click',
-        () => (mercedesCard1.style.display = 'flex')
-    );
-    const esconderMercedes = document.querySelector('#esconderMercedes');
-    esconderMercedes.addEventListener('click', () => esconderCard1(mercedesCard1));
-
-    const mclarenCard = document.querySelector('#mclarenCard');
-    const mclarenCard1 = document.querySelector('#mclarenCard1');
-    mclarenCard.addEventListener('click', () => mostrarCard(mclarenCard1));
-    const esconderMclaren = document.querySelector('#esconderMclaren');
-    esconderMclaren.addEventListener('click', () => esconderCard1(mclarenCard1));
-
-    const williamsCard = document.querySelector('#williamsCard');
-    const williamsCard1 = document.querySelector('#williamsCard1');
-    williamsCard.addEventListener('click', () => mostrarCard(williamsCard1));
-    const esconderWilliams = document.querySelector('#esconderWilliams');
-    esconderWilliams.addEventListener('click', () => esconderCard1(williamsCard1));
-
-    function mostrarCard(card) {
-        card.style.display = 'flex';
-    }
-
-    function esconderCard1(card) {
-        card.style.display = 'none';
-    }
-
-
-</script>
 
 </html>

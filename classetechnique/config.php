@@ -1,10 +1,10 @@
 <?php
 // paramètre de connexion au serveur de base de données
 return [
-    'host' => 'localhost',
-    'database' => 'f1',
-    'user' => 'root',
-    'password' => '',
+    'host' => 'mysql-rcharkaoui.alwaysdata.net',
+    'database' => 'rcharkaoui_f1',
+    'user' => '339575',
+    'password' => 'Marocco80',
     'port' => 3306
 ];
 

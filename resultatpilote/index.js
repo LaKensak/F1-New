@@ -13,7 +13,6 @@ let ecurie = document.getElementById('ecurie');
 let pilote = document.getElementById('pilote');
 let numeroPilote = document.getElementById('numpilote');
 
-
 nom.innerText = nomPilote;
 pilote.innerText = nomPilote + ' ' + prenom;
 nationalite.innerText = nomPays;
@@ -21,7 +20,8 @@ ecurie.innerText = ecuriePilote;
 numeroPilote.innerText = numPilote;
 // Afficher la photo du pilote
 logo.src = '/img/pilote/' + photoPilote;
-pays.src = '/img/pays/' + paysPilote;
+pays.src = '/img/pays/' + paysPilote + '.png';
+
 
 
 for (const ecurie of data) {

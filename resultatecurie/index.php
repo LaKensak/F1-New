@@ -45,8 +45,8 @@ $ligne = $select->getRows($sql, ['id' => $id]);
 $sqlEcurie = <<<EOD
         SELECT logo,p.id as Pays,imgVoiture,pilote.nom as nomPilote, pilote.prenom,photo,pilote.id as idPilote,pilote.idPays as paysPilote
         FROM ecurie
-        join f1.pays p on ecurie.idPays = p.id
-        join f1.pilote on ecurie.id = pilote.idEcurie
+        join pays p on ecurie.idPays = p.id
+        join pilote on ecurie.id = pilote.idEcurie
         WHERE ecurie.id = :id
 EOD;
 

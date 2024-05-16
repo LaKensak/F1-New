@@ -56,8 +56,8 @@ EOD;
 $sqlPilote = <<<EOD
     SELECT photo, pays.id as Pays,e.nom as ecuriePilote,pilote.id as numPilote, pays.nom as nomPays, pilote.prenom as prenom
 FROM pilote
-join f1.pays on pilote.idPays = pays.id
-join f1.ecurie e on pilote.idEcurie = e.id
+join pays on pilote.idPays = pays.id
+join ecurie e on pilote.idEcurie = e.id
 WHERE pilote.id = :id
 EOD;
 
