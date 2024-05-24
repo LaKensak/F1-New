@@ -1,0 +1,31 @@
+<div class="border p-3 mt-3 " style="width: 45rem; margin:auto">
+    <div class="input-group col-md-6 mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="idGrandPrix">Sélectionnez le Grand Prix </label>
+        </div>
+        <select class="form-select" id="idGrandPrix">
+        </select>
+    </div>
+    <div class="input-group col-md-6 mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="idPilote">Sélectionnez le pilote ayant obtenu le point bonus </label>
+        </div>
+        <select class="form-select" id="idPilote">
+            <option value="0">Aucun</option>
+        </select>
+    </div>
+
+    <label for="leClassement" class="col-form-label obligatoire">
+        Saisir les numéros des pilotes dans l'ordre d'arrivée en les séparant par une virgule (sans autre caractère)
+    </label>
+    <input id="leClassement"
+           type="text"
+           class="form-control"
+           required
+           maxlength='60'
+           pattern="^(?:([1-9]|[1-9][0-9]),){9,19}([1-9]|[1-9][0-9])$"
+           autocomplete="off">
+    <div class="mt-3 text-center">
+        <button id='btnEnregistrer' class="bouton btn btn-sm btn-success">Enregistrer le classement</button>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+# protection de l'accès
+AuthType Basic
+# AuthUserFile "/home/formule1/www/admin/.htpasswd"
+AuthUserFile "j:/www/f1/admin/.htpasswd"
+AuthName "Administration"
+Require valid-user
+
+# protection du fichier .htpasswd
+<Files ".htpasswd">
+    Require all denied
+</Files>
+
+
+
+

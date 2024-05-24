@@ -1,0 +1,32 @@
+<div class="formulaire" style="width:36rem">
+    <div id="msg"></div>
+    <label for="date" class="col-form-label">Date de la course </label>
+    <input id='date'
+           style="width: 160px;"
+           type="date"
+           class="form-control "
+           required
+    >
+    <label for="nom" class="col-form-label  obligatoire">Nom du Grand Prix </label>
+    <input id="nom"
+           type="text"
+           class="form-control"
+           required
+           maxlength='30'
+           pattern="^[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]([ '\-]?[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ])*$"
+           autocomplete="off">
+    <label for="circuit" class="col-form-label  obligatoire">Circuit</label>
+    <input id="circuit"
+           type="text"
+           class="form-control"
+           required
+           maxlength='30'
+           pattern="^[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]([ '\-]?[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ])*$"
+           autocomplete="off">
+    <label for="idPays" class="col-form-label">Pays </label>
+    <select id="idPays" class="form-select"></select>
+    <div class="text-center mt-3">
+        <button id="btnAjouter" class="btn btn-danger">Ajouter</button>
+    </div>
+</div>
+

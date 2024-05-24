@@ -1,0 +1,40 @@
+<div class="border p-3 mt-3 " style="width: 45rem; margin:auto">
+    <div class="input-group col-md-6 mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="id">Sélectionnez le Grand Prix </label>
+        </div>
+        <select class="form-select" id="id"></select>
+    </div>
+    <div class="formulaire" style="width:36rem">
+        <div id="msg"></div>
+        <label for="date" class="col-form-label">Date de la course </label>
+        <input id='date'
+               style="width: 160px;"
+               type="date"
+               class="form-control "
+               required
+        >
+        <label for="nom" class="col-form-label  obligatoire">Nom du Grand Prix </label>
+        <input id="nom"
+               type="text"
+               class="form-control"
+               required
+               maxlength='30'
+               pattern="^[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]([ '\-]?[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ])*$"
+               autocomplete="off">
+        <label for="circuit" class="col-form-label  obligatoire">Circuit</label>
+        <input id="circuit"
+               type="text"
+               class="form-control"
+               required
+               maxlength='30'
+               pattern="^[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]([ '\-]?[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ])*$"
+               autocomplete="off">
+        <label for="idPays" class="col-form-label">Pays </label>
+        <select id="idPays" class="form-select"></select>
+        <div class="d-flex flex-row justify-content-between">
+            <button id='btnModifier' class="btn btn-sm btn-success m-3">Modifier</button>
+            <button id='btnSupprimer' class="btn btn-sm btn-danger m-3">Supprimer</button>
+        </div>
+    </div>
+</div>

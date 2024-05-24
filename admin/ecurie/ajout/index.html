@@ -1,0 +1,17 @@
+<div class="formulaire" style="width:36rem">
+    <div id="msg"></div>
+    <label for="nom" class="col-form-label  obligatoire">Nom </label>
+    <input id="nom"
+           type="text"
+           class="form-control ctrl"
+           required
+           minlength='3'
+           maxlength='45'
+           pattern="^[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]([ '\-]?[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ])*$"
+           autocomplete="off">
+    <label for="idPays" class="col-form-label">Pays </label>
+    <select id="idPays" class="form-select"></select>
+    <div class="text-center mt-3">
+        <button id="btnAjouter" class="btn btn-danger">Ajouter</button>
+    </div>
+</div>

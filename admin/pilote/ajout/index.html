@@ -1,0 +1,53 @@
+<div class="formulaire" style="width:36rem">
+    <div id="msg"></div>
+    <label for="id" class="col-form-label  obligatoire">Numéro</label>
+    <input id='id' type="number"
+           class="form-control"
+           style="width: 150px"
+           maxlength='2'
+           pattern="^[0-9]{1,2}$"
+           required
+           autocomplete="off">
+    <label for="dateNaissance" class="col-form-label obligatoire">
+        Date de naissance
+    </label>
+    <input id='dateNaissance' type="date" class="form-control"
+           required
+           style="width: 150px"
+    >
+
+    <label for="nom" class="col-form-label  obligatoire">Nom </label>
+    <input id="nom"
+           type="text"
+           class="form-control"
+           required
+           minlength='3'
+           maxlength='30'
+           pattern="[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ](?:[ '\-]?[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ])*$"
+           autocomplete="off">
+    <label for="prenom" class="col-form-label  obligatoire">Prénom </label>
+    <input id="prenom"
+           type="text"
+           class="form-control"
+           required
+           minlength='3'
+           maxlength='20'
+           pattern="[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+(?:[ '\-]?[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+)*$"
+           autocomplete="off">
+
+
+    <label for="idPays" class="col-form-label">Pays</label>
+    <select id="idPays" class="form-select" style="max-width: 200px"> </select>
+    <label for="idEcurie" class="col-form-label">Ecurie </label>
+    <select id="idEcurie" class="form-select" style="max-width: 200px"> </select>
+    <label for="numPilote" class="col-form-label">Numéro du pilote au sein de l'écurie</label>
+    <select id="numPilote" class="form-select" style="max-width: 80px" value="3">
+        <option value="1">1</option>
+        <option value="2">2</option>
+         <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    <div class="text-center mt-3">
+        <button id="btnAjouter" class="btn btn-danger">Ajouter</button>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-sm" style="margin: 0; padding: 0">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-content"
+            aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+        </span>
+    </button>
+    <a class="navbar-brand" href="/index.php" data-bs-toggle='tooltip' title="Accueil" data-placement='bottom'>
+        <span class="masquer text-white"> <img src="/img/logo.svg" width="60" height="60" alt="logo"></span>
+    </a>
+    <a class="navbar-brand" href="#">Adminstration</a>
+    <div class="collapse navbar-collapse" id="nav-content">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                   role="button" aria-haspopup="true" aria-expanded="false">
+                    Résultat
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class='dropdown-item' href='/admin/resultat/ajout'>Ajouter</a>
+                    </li>
+                    <li>
+                        <a class='dropdown-item' href='/admin/resultat/suppression'>Supprimer</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                   role="button" aria-haspopup="true" aria-expanded="false">
+                    Grand Prix
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class='dropdown-item' href='/admin/grandprix/ajout'>Ajouter</a>
+                    </li>
+                    <li>
+                        <a class='dropdown-item' href='/admin/grandprix/maj'>Gérer</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                   role="button" aria-haspopup="true" aria-expanded="false">
+                    Pilote
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class='dropdown-item' href='/admin/pilote/ajout'>Ajouter</a>
+                    </li>
+                    <li>
+                        <a class='dropdown-item' href='/admin/pilote/modification'>Gérer</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                   role="button" aria-haspopup="true" aria-expanded="false">
+                    Ecurie
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class='dropdown-item' href='/admin/ecurie/ajout'>Ajouter</a>
+                    </li>
+                    <li>
+                        <a class='dropdown-item' href='/admin/ecurie/maj'>Gérer</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
