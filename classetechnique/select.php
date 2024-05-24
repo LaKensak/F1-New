@@ -4,8 +4,8 @@
  * Classe permettant de gérer toutes les requêtes de consultation de la base de données
  *
  * @Author : Guy Verghote
- * @Version : 2024.1
- * @Date : 14/01/2024
+ * @Version : 2024.5
+ * @Date : 11/05/2024
  */
 class Select
 {
@@ -21,13 +21,11 @@ class Select
 
     /**
      * Constructeur d'un objet Select
-     * @param array $params tableau contenant les paramètres de connexion à la base de données (host, database, user, pwd, port
-     * $param est facultatif, sa valeur par défaut est un tableau vide
-     * La méthode getInstance utilisera les valeurs par défaut définies dans le fichier config.php si $param est vide
+	 * Inialise l'attribut privé $db (objet PDO) en appelant la méthode getInstance de la classe Database
      */
-    function __construct(array $params = [])
+    function __construct()
     {
-        $this->db = Database::getInstance($params);
+        $this->db = Database::getInstance();
     }
 
     /*
@@ -37,13 +35,13 @@ class Select
     */
 
     /**
-     * Retourne dans un tableau numérique le résultat d'une requête SQL retournant plusieurs lignnes
+     * Retourne dans un tableau numérique, le résultat d'une requête SQL retournant plusieurs lignnes
      *  chaque ligne étant un tableau associatif clé = nomcolonne et valeur = valeur de la colonne
      * @param string $sql requête Sql
      * @param array $lesParametres tableau associatif clé = nomcolonne et valeur = valeur transmise
      * @return array
      */
-    function getRows(string $sql, array $lesParametres = []): array
+    function getRows( $sql, array $lesParametres = [])
     {
         if ($lesParametres === []) {
             $curseur = $this->db->query($sql);
@@ -61,12 +59,12 @@ class Select
     }
 
     /**
-     * Retourne dans un tableau associatif  le résultat d'une requête retournant une seule ligne
+     * Retourne dans un tableau associatif, le résultat d'une requête retournant une seule ligne
      * @param string $sql requête Sql
      * @param array $lesParametres tableau associatif clé = nomcolonne et valeur = valeur transmise
      * @return array
      */
-    function getRow(string $sql, array $lesParametres = []): array|bool
+    function getRow( $sql, array $lesParametres = [])
     {
         if ($lesParametres === []) {
             $curseur = $this->db->query($sql);
@@ -84,12 +82,12 @@ class Select
     }
 
     /**
-     * Retourne dans une varaible  le résultat d'une requête retournant une seule valeur
+     * Retourne dans une variable, le résultat d'une requête retournant une seule valeur
      * @param string $sql requête Sql
      * @param array $lesParametres tableau associatif clé = nomcolonne et valeur = valeur transmise
      * @return mixed la valeur retournée par la requête
      */
-    function getValue(string $sql, array $lesParametres = []): mixed
+    function getValue($sql, array $lesParametres = [])
     {
         if ($lesParametres === []) {
             $curseur = $this->db->query($sql);

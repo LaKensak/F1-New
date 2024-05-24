@@ -1,40 +1,39 @@
 <?php
-declare(strict_types=1);
 
 /**
  * Classe Table : représente une table SQL
  * Cette classe est une classe abstraite donc non instanciable.
  * Elle met en facteur tous les attributs et toutes les méthodes communes aux classes dérivées
  * @Author : Guy Verghote
- * @Date : 28/02/2024
- * @version : 2024.3
+ * @Date : 27/04/2024
+ * @version : 2024.4
  */
 abstract class Table
 {
     // objet PDO pour réaliser l'ensemble des requêtes sur la table $tableName de la base de donnée $database
-    private PDO $db;
+    private $db;
 
     // nom de la table : sera défini dans la classe dérivée
-    private string $tableName;
+    private $tableName;
 
     // nom de la colonne de clé primaire par défaut id (sera défini dans la classe dérivée si la clé primaire n'est pas id)
-    protected string $idName = 'id';
+    protected $idName = 'id';
 
     // Colonnes composant la structure de la table (à l'exeption de l'identifiant)
     // Tableau associatif - clé : nom de la colonne, valeur : un objet Input (contient la valeur et les règles de validations)
     // sera défini dans la classe dérivée
-    protected array $columns;
+    protected $columns;
 
     // Objet InputList contenant les colonnes modifiables en mode colonne
     // sera défini dans la classe dérivée
-    protected InputList $listOfColumns;
+    protected $listOfColumns;
 
     //  tableau d'objet Erreur alimenté par les méthodes de gestion
-    private array $lesErreurs = [];
+    private $lesErreurs = [];
 
     // propriété statique contenant la valeur de l'identifiant de la dernière ligne insérée lorsque l'identifiant est un champ auto-incrémenté
     // alimenté par la méthode lastInsertId de la classe PDO qui retourne une chaîne ou faux
-    private string|false $lastInsertId = false;
+    private $lastInsertId = false;
 
     /**
      * Filtre le message d'erreur pour en connaitre l'origine (déclencheur ou erreur imprévue)
@@ -43,7 +42,7 @@ abstract class Table
      * @return void
      */
 
-    private function envoyerErreur(string $message)
+    private function envoyerErreur($message)
     {
         // recherche de la présence d'un # qui signale un message provenant d'un déclencheur
         $filteredMessage = strstr($message, '#');
@@ -64,7 +63,7 @@ abstract class Table
      * Constructeur
      * @param string $nomTable nom de la table gérée
      */
-    protected function __construct(string $nomTable)
+    protected function __construct( $nomTable)
     {
         $this->tableName = $nomTable;
         $this->columns = [];
@@ -83,19 +82,19 @@ abstract class Table
      * @param string $colonne Nom de la colonne de la table
      * @return Input
      */
-    public function getColonne(string $colonne): Input
+    public function getColonne( $colonne)
     {
         return $this->columns[$colonne];
     }
 
     // accesseur en lecture sur le tableau des erreurs
-    public function getLesErreurs(): array
+    public function getLesErreurs()
     {
         return $this->lesErreurs;
     }
 
     // accesseur en lecture sur la dernière valeur générée d'un champ auto-increment
-    public function getLastInsertId(): false|string
+    public function getLastInsertId()
     {
         return $this->lastInsertId;
     }
@@ -109,10 +108,10 @@ abstract class Table
       /**
      * Alimente les paramètres de la requête et l'exécute
      * En cas d'erreur, l'erreur est conservé dans l'attribut statique lesErreurs
-     * @param string $sql Requête SQL paramétrée de type insert ou update à exécuter
+     * @param  string $sql Requête SQL paramétrée de type insert ou update à exécuter
      * @return bool
      */
-    private function prepareAndExecute(string $sql): bool
+    private function prepareAndExecute( $sql)
     {
         $curseur = $this->db->prepare($sql);
 
@@ -144,7 +143,7 @@ abstract class Table
      * Contrôle que tous les objets Input obligatoires ont bien une valeur
      * @return bool
      */
-    public function donneesTransmises(): bool
+    public function donneesTransmises()
     {
         // Alimente les objets Input à l'aide du tableau $_POST
         foreach ($_POST as $cle => $valeur) {
@@ -176,7 +175,7 @@ abstract class Table
      * Contrôle la valeur attribuée à chaque colonne à partir des règles de validation associées à chaque colonne
      * @return bool
      */
-    public function checkAll(): bool
+    public function checkAll()
     {
         // Parcourt chaque objet Input et appelle sa méthode checkValidity pour vérifier la conformité de sa valeur
         // en cas de non-conformité, le message d'erreur est conservé dans le tableau des erreurs
@@ -194,7 +193,7 @@ abstract class Table
      * Ajoute un enregistrement dans une table et éventuellement le fichier associé
      * @return bool
      */
-    public function insert(): bool
+    public function insert()
     {
         // génération de la requête insert
         $set = "";
@@ -217,7 +216,6 @@ abstract class Table
             if (isset($this->columns['fichier']) && $this->columns['fichier'] instanceof InputFile) {
                 $this->columns['fichier']->copy();
             }
-
             // on renseigne la valeur de l'attribut lastInsertID au cas où (on ne peut pas savoir si l'identifiant est un compteur)
             $this->lastInsertId = $this->db->lastInsertId();
             return true;
@@ -232,7 +230,7 @@ abstract class Table
      * @param int|string $id valeur de la clé primaire (entier ou chaine de caractères)
      * @return bool
      */
-    public function delete(int|string $id): bool
+    public function delete($id)
     {
         // vérification de l'id et récupération éventuelle du nom du fichier associé à l'enregistrement
         if (isset($this->columns['fichier'])) {
@@ -284,12 +282,12 @@ EOD;
      * @param array $lesValeurs tableau associatif des nouvelles valeurs
      * @return bool
      */
-    public function update(int|string $id, array $lesValeurs): bool
+    public function update($id, $lesValeurs)
     {
         // Alimentation de la valeur des objets Input concernés
         foreach ($lesValeurs as $cle => $valeur) {
             if (!isset($this->columns[$cle])) {
-                $this->lesErreurs['global'] = "Requête mal formulée";
+                $this->lesErreurs['global'] = "Requête mal formulée.";
                 return false;
             } else {
                 $this->columns[$cle]->Value = $valeur;
@@ -344,12 +342,12 @@ EOD;
      * @param string|int $id Valeur de la clé primaire
      * @return bool
      */
-    public function modifierColonne(string $colonne, string|int $valeur, string|int $id): bool
+    public function modifierColonne($colonne, $valeur, $id)
     {
         // contrôle sur la colonne : La colonne doit faire partie des colonnes modifiables de la table
         $this->listOfColumns->Value = $colonne;
         if (!$this->listOfColumns->checkValidity()) {
-            $this->lesErreurs['global'] = "Ce champ n'est pas modifiable";
+            $this->lesErreurs['global'] = "Ce champ n'est pas modifiable.";
             return false;
         }
 
@@ -365,7 +363,7 @@ EOD;
         $ligne = $curseur->fetch(PDO::FETCH_ASSOC);
         $curseur->closeCursor();
         if (!$ligne) {
-            $this->lesErreurs['global'] = "L'enregistrements à modifier n'existe pas";
+            $this->lesErreurs['global'] = "L'enregistrement à modifier n'existe pas.";
             return false;
         }
 
@@ -403,11 +401,11 @@ EOD;
      * @param string|int $id Valeur de la clé primaire
      * @return bool
      */
-    public function setNull(string $colonne, string|int $id): bool
+    public function setNull($colonne, $id)
     {
         // contrôle de la colonne
         if (! isset($this->columns[$colonne])) {
-            $this->lesErreurs['global'] = "Requête invalide";
+            $this->lesErreurs['global'] = "Requête invalide.";
             return false;
         }
 
@@ -423,7 +421,7 @@ EOD;
         $ligne = $curseur->fetch(PDO::FETCH_ASSOC);
         $curseur->closeCursor();
         if (!$ligne) {
-            $this->lesErreurs['global'] = "L'enregistrement à modifier n'existe pas";
+            $this->lesErreurs['global'] = "L'enregistrement à modifier n'existe pas.";
             return false;
         }
 

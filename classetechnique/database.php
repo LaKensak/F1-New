@@ -1,44 +1,58 @@
 <?php
 
 /**
- * Classe permettant de se connecter à la base de données et d'obtenir une instance de PDO
+ * Classe de type singleton permettant de générer un objet DBo unique pour l'application
  *
  * @Author : Guy Verghote
- * @Version : 2024.1
- * @Date : 13/01/2024
+ * @Version : 2    Connexion local ou sur serveur
  */
 
 class Database
 {
-    //  attribut privé pour stocker l'unique instance de la classe
     private static $_instance; // stocke l'adresse de l'unique objet instanciable
 
     /**
      * La méthode statique qui permet d'instancier ou de récupérer l'instance unique
-     *  Les valeurs par défaut des paramètres doivent être adaptées à l'application
-     * @param array $params tableau associatif contenant les paramètres de connexion
      **/
-    public static function getInstance(array $params = []): PDO
+    public static function getInstance()
     {
         if (is_null(self::$_instance)) {
-            $config = require('config.php');
-
-            $dbHost = $param['host'] ?? $config['host'];
-            $dbBase = $params['database'] ?? $config['database'];
-            $dbUser = $params['user'] ?? $config['user'];
-            $dbPassword = $params['password'] ?? $config['password'];
-            $dbPort = $params['port'] ?? $config['port'];
+            $config = self::getConfigFile();
+            $dbHost = $config['host'];
+            $dbBase = $config['database'];
+            $dbUser = $config['user'];
+            $dbPassword = $config['password'];
+            $dbPort = $config['port'];
             try {
                 $chaine = "mysql:host=$dbHost;dbname=$dbBase;port=$dbPort";
                 $db = new PDO($chaine, $dbUser, $dbPassword);
                 $db->exec("SET NAMES 'utf8'");
                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 self::$_instance = $db;
-            } catch (PDOException $e) { // à personnaliser
-                echo "Accès à la base de données impossible, vérifiez les paramètres de connexion " . $e->getMessage();
-                exit();
+            } catch (PDOException $e) {
+                Erreur::envoyerReponse($e->getMessage(), 'system');
             }
         }
         return self::$_instance;
+    }
+
+    private static function getConfigFile()
+    {
+        // $admin = str_starts_with($_SERVER['SCRIPT_NAME'], '/admin');
+        $admin = substr($_SERVER['SCRIPT_NAME'], 0, 6) === '/admin';
+
+        if ($_SERVER['SERVER_NAME'] === 'f1') {
+            if($admin) {
+                return require dirname(__FILE__) . '/configlocaleadmin.php';
+            } else {
+                return require dirname(__FILE__) . '/configlocale.php';
+            }
+        } else {
+            if($admin) {
+                return require dirname(__FILE__)  . '/configdistanteadmin.php';
+            } else {
+                return require(dirname(__FILE__) . '/configdistante.php');
+            }
+        }
     }
 }
