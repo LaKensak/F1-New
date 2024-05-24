@@ -25,10 +25,10 @@ $leClassement = [];
 foreach ($classement as $element) {
     $numPilote = intval($element);
     if (!in_array($numPilote, $lesPilotes)) {
-        Erreur::envoyerReponse("Le pilote $numPilote n'existe pas dans la liste des pilotes", "system");
+        Erreur::envoyerReponse("Le pilote $numPilote n'existe pas dans la liste des pilotes", "global");
         return;
     } elseif (in_array($numPilote, $leClassement)) {
-        Erreur::envoyerReponse("Le pilote $numPilote est présent deux fois dans le classement", "system");
+        Erreur::envoyerReponse("Le pilote $numPilote est présent deux fois dans le classement", "global");
         return;
     }
     $leClassement[] = $numPilote;
