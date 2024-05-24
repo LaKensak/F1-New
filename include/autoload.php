@@ -20,4 +20,13 @@ spl_autoload_register(function ($name) {
         require $fichier;
         return;
     }
+
+
+    // Recherche dans le répertoire classemetier
+    $fichier = RACINE . "/classemetier/$name.php";
+    if (file_exists($fichier)) {
+        require $fichier;
+        return;
+    }
+
 });

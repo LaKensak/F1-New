@@ -1,73 +1,126 @@
-<nav class="navbar navbar-expand-sm" style="margin: 0; padding: 0">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-content"
-            aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon">
-        </span>
-    </button>
-    <a class="navbar-brand" href="/index.php" data-bs-toggle='tooltip' title="Accueil" data-placement='bottom'>
-        <span class="masquer text-white"> <img src="/img/logo.svg" width="60" height="60" alt="logo"></span>
-    </a>
-    <a class="navbar-brand" href="#">Adminstration</a>
-    <div class="collapse navbar-collapse" id="nav-content">
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-                   role="button" aria-haspopup="true" aria-expanded="false">
-                    Résultat
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class='dropdown-item' href='/admin/resultat/ajout'>Ajouter</a>
-                    </li>
-                    <li>
-                        <a class='dropdown-item' href='/admin/resultat/suppression'>Supprimer</a>
-                    </li>
-                </ul>
-            </li>
+<nav class="bg-red-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <a href="..">
+                        <img class="w-20" src="/img/logo.svg" alt="Logo">
+                        <span class="navbar-brand text-white">Administration</span>
+                    </a>
+                </div>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-                   role="button" aria-haspopup="true" aria-expanded="false">
-                    Grand Prix
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class='dropdown-item' href='/admin/grandprix/ajout'>Ajouter</a>
-                    </li>
-                    <li>
-                        <a class='dropdown-item' href='/admin/grandprix/maj'>Gérer</a>
-                    </li>
-                </ul>
-            </li>
+                <!-- Dropdown Résultat -->
+                <div class="relative ml-40">
+                    <button id="dropdownResultatButton" class="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
+                        Résultat
+                        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                        </svg>
+                    </button>
+                    <!-- Dropdown menu Résultat -->
+                    <div id="dropdownResultat" class="hidden absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 right-0">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownResultatButton">
+                            <li>
+                                <a href="/admin/resultat/ajout" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ajouter</a>
+                            </li>
+                            <li>
+                                <a href="/admin/resultat/suppression" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Supprimer</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-                   role="button" aria-haspopup="true" aria-expanded="false">
-                    Pilote
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class='dropdown-item' href='/admin/pilote/ajout'>Ajouter</a>
-                    </li>
-                    <li>
-                        <a class='dropdown-item' href='/admin/pilote/modification'>Gérer</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-                   role="button" aria-haspopup="true" aria-expanded="false">
-                    Ecurie
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class='dropdown-item' href='/admin/ecurie/ajout'>Ajouter</a>
-                    </li>
-                    <li>
-                        <a class='dropdown-item' href='/admin/ecurie/maj'>Gérer</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+                <!-- Dropdown Grand Prix -->
+                <div class="relative ml-4">
+                    <button id="dropdownGrandPrixButton" class="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
+                        Grand Prix
+                        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                        </svg>
+                    </button>
+                    <!-- Dropdown menu Grand Prix -->
+                    <div id="dropdownGrandPrix" class="hidden absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 right-0">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownGrandPrixButton">
+                            <li>
+                                <a href="/admin/grandprix/ajout" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ajouter</a>
+                            </li>
+                            <li>
+                                <a href="/admin/grandprix/maj" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Gérer</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Dropdown Pilote -->
+                <div class="relative ml-4">
+                    <button id="dropdownPiloteButton" class="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
+                        Pilote
+                        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                        </svg>
+                    </button>
+                    <!-- Dropdown menu Pilote -->
+                    <div id="dropdownPilote" class="hidden absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 right-0">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownPiloteButton">
+                            <li>
+                                <a href="/admin/pilote/ajout" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ajouter</a>
+                            </li>
+                            <li>
+                                <a href="/admin/pilote/modification" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Modifier</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Dropdown Ecurie -->
+                <div class="relative ml-4">
+                    <button id="dropdownEcurieButton" class="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
+                        Ecurie
+                        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                        </svg>
+                    </button>
+                    <!-- Dropdown menu Ecurie -->
+                    <div id="dropdownEcurie" class="hidden absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 right-0">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownEcurieButton">
+                            <li>
+                                <a href="/admin/ecurie/ajout" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ajouter</a>
+                            </li>
+                            <li>
+                                <a href="/admin/ecurie/maj" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Gérer</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </nav>
+<script>
+    // Fonction pour afficher ou cacher le menu déroulant Résultat
+    document.getElementById('dropdownResultatButton').addEventListener('click', function() {
+        var dropdownResultat = document.getElementById('dropdownResultat');
+        dropdownResultat.classList.toggle('hidden');
+    });
+
+    // Fonction pour afficher ou cacher le menu déroulant Grand Prix
+    document.getElementById('dropdownGrandPrixButton').addEventListener('click', function() {
+        var dropdownGrandPrix = document.getElementById('dropdownGrandPrix');
+        dropdownGrandPrix.classList.toggle('hidden');
+    });
+
+    // Fonction pour afficher ou cacher le menu déroulant Pilote
+    document.getElementById('dropdownPiloteButton').addEventListener('click', function() {
+        var dropdownPilote = document.getElementById('dropdownPilote');
+        dropdownPilote.classList.toggle('hidden');
+    });
+
+    // Fonction pour afficher ou cacher le menu déroulant Ecurie
+    document.getElementById('dropdownEcurieButton').addEventListener('click', function() {
+        var dropdownEcurie = document.getElementById('dropdownEcurie');
+        dropdownEcurie.classList.toggle('hidden');
+    });
+</script>
+
+

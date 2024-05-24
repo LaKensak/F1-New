@@ -5,7 +5,7 @@ import {
     donneesValides,
     configurerFormulaire,
     afficherSucces,
-    afficherErreur
+    afficherErreur, viderLesChamps
 } from "/composant/fonction.js";
 
 /*global data */
@@ -70,6 +70,9 @@ function enregistrer() {
             idPilote : idPilote.value
         },
         success: () => {
+            viderLesChamps();
+            afficherSucces("Opération réalisée avec succès");
+
             // suppression du Grand Prix sélectionné dans la liste
             idGrandPrix.remove(idGrandPrix.selectedIndex);
             // s'il n'y a plus de Grand Prix, on retourne à l'accueil

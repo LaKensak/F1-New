@@ -12,6 +12,30 @@ $idGrandPrix = $_POST["idGrandPrix"];
 $idPiloteBonus = $_POST["idPilote"];
 $classement = json_decode($_POST["classement"]);
 
+$lesPilotes = [];
+
+// Parcours du tableau d'objets data.lesPilotes
+foreach (Pilote::getListe() as $element) {
+    // Ajout de l'identifiant du pilote au tableau $lesPilotes
+    $lesPilotes[] = intval($element['id']);
+}
+
+$leClassement = [];
+
+foreach ($classement as $element) {
+    $numPilote = intval($element);
+    if (!in_array($numPilote, $lesPilotes)) {
+        Erreur::envoyerReponse("Le pilote $numPilote n'existe pas dans la liste des pilotes", "system");
+        return;
+    } elseif (in_array($numPilote, $leClassement)) {
+        Erreur::envoyerReponse("Le pilote $numPilote est présent deux fois dans le classement", "system");
+        return;
+    }
+    $leClassement[] = $numPilote;
+}
+
+
+
 // vérification des paramètres
 $db = Database::getInstance();
 
