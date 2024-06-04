@@ -1,7 +1,7 @@
 # protection de l'accès
 AuthType Basic
 # AuthUserFile "/home/formule1/www/admin/.htpasswd"
-AuthUserFile "j:/www/f1/admin/.htpasswd"
+AuthUserFile "C:\Users\rara8\Desktop\F1-New\admin\.htpasswd"
 AuthName "Administration"
 Require valid-user
 

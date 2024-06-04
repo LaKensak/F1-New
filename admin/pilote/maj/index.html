@@ -1,0 +1,52 @@
+<div class="border p-3 mt-3 " style="width: 45rem; margin:auto">
+    <div class="input-group col-md-6 mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="id">Sélectionnez un pilote </label>
+        </div>
+        <select class="form-select" id="id"></select>
+    </div>
+    <div class="formulaire" style="width:36rem">
+        <div id="msg"></div>
+        <label for="numero" class="col-form-label  obligatoire">Numéro</label>
+        <input id='numero' type="number"
+               class="form-control"
+               style="width: 150px"
+               maxlength='2'
+               pattern="^[0-9]{1,2}$"
+               required
+               autocomplete="off">
+        <label for="nom" class="col-form-label  obligatoire">Nom</label>
+        <input id="nom"
+               type="text"
+               class="form-control"
+               required
+               maxlength='30'
+               pattern="^[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]([ '\-]?[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ])*$"
+               autocomplete="off">
+        <label for="prenom" class="col-form-label  obligatoire">Prenom</label>
+        <input id="prenom"
+               type="text"
+               class="form-control"
+               required
+               maxlength='30'
+               pattern="^[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]([ '\-]?[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ])*$"
+               autocomplete="off">
+        <label for="idPays" class="col-form-label">Pays </label>
+        <select id="idPays" class="form-select"></select>
+        <label for="idEcurie" class="col-form-label">Ecurie</label>
+        <select id="idEcurie" class="form-select"></select>
+        <label for="numPilote" class="col-form-label">Numéro du pilote au sein de l'écurie</label>
+        <select id="numPilote" class="form-select" style="max-width: 80px" value="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+
+
+        <div class="d-flex flex-row justify-content-between">
+            <button id='btnModifier' class="btn btn-sm btn-success m-3">Modifier</button>
+            <button id='btnSupprimer' class="btn btn-sm btn-danger m-3">Supprimer</button>
+        </div>
+    </div>
+</div>

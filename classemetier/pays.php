@@ -13,9 +13,9 @@ class Pays
     public static function getListe(): array
     {
         $sql = <<<EOD
-       Select id, nom
-        From pays
-        order by nom;
+       SELECT id, nom
+       FROM pays
+       ORDER BY nom;
 EOD;
         $select = new Select();
         return $select->getRows($sql);

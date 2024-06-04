@@ -284,56 +284,57 @@ EOD;
      */
     public function update($id, $lesValeurs)
     {
-        // Alimentation de la valeur des objets Input concernés
-        foreach ($lesValeurs as $cle => $valeur) {
-            if (!isset($this->columns[$cle])) {
-                $this->lesErreurs['global'] = "Requête mal formulée.";
-                return false;
-            } else {
-                $this->columns[$cle]->Value = $valeur;
-            }
-        }
-
-        // Génération de la clause Set et contrôle des valeurs modifiées
-        $erreur = false;
+        // Construction de la clause SET
         $set = "";
-        foreach ($this->columns as $cle => $input) {
-            if ($input->Value !== null) {
-                if ($input->checkValidity()) {
-                    $set .= "$cle = :$cle, ";
-                } else {
-                    $this->lesErreurs[$cle] = $input->getValidationMessage();
-                    $erreur = true;
-                }
-            }
-        }
-        if ($erreur) {
-            return false;
-        }
-        $set = substr($set, 0, -2);
-        // vérification de l'existence de la valeur de la clé primaire
-        $sql = <<<EOD
-                Select 1 from  $this->tableName
-                where $this->idName = :id;
-EOD;
-        $curseur = $this->db->prepare($sql);
-        $curseur->bindValue('id', $id);
-        $curseur->execute();
-        $ligne = $curseur->fetch(PDO::FETCH_ASSOC);
-        $curseur->closeCursor();
-        if (!$ligne) {
-            $this->lesErreurs['global'] = "Enregistrement inexistant.";
-            return false;
+        $newId = null;
+        if (isset($lesValeurs['newId'])) {
+            $newId = $lesValeurs['newId'];
+            unset($lesValeurs['newId']);
         }
 
-        //  Requête de mise à jour
-        $sql = <<<EOD
-            update  $this->tableName
-             set $set
-             where $this->idName = '$id';
-EOD;
-        return $this->prepareAndExecute($sql);
+        foreach ($lesValeurs as $cle => $valeur) {
+            $set .= "$cle = :$cle, ";
+        }
+        $set = rtrim($set, ', '); // Supprimer la virgule et l'espace à la fin
+
+        try {
+            // Début de la transaction
+            $this->db->beginTransaction();
+
+            // Mise à jour des autres colonnes
+            $sql = "UPDATE $this->tableName SET $set WHERE $this->idName = :id";
+            $curseur = $this->db->prepare($sql);
+
+            // Liaison des paramètres nommés aux valeurs
+            foreach ($lesValeurs as $cle => $valeur) {
+                $curseur->bindValue(":$cle", $valeur);
+            }
+            $curseur->bindValue(':id', $id);
+            $curseur->execute();
+
+            // Mise à jour de l'ID si nécessaire
+            if ($newId) {
+                $sql = "UPDATE $this->tableName SET $this->idName = :newId WHERE $this->idName = :id";
+                $curseur = $this->db->prepare($sql);
+                $curseur->bindValue(':newId', $newId);
+                $curseur->bindValue(':id', $id);
+                $curseur->execute();
+            }
+
+            // Validation de la transaction
+            $this->db->commit();
+            return true;
+        } catch (Exception $e) {
+            // Annulation de la transaction en cas d'erreur
+            $this->db->rollBack();
+            $this->lesErreurs['global'] = "Erreur lors de la mise à jour de l'enregistrement : " . $e->getMessage();
+            return false;
+        }
     }
+
+
+
+
 
     /**
      * Modifie la valeur d'une colonne d'un enregistrement

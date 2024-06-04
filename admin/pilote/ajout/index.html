@@ -9,13 +9,6 @@
            pattern="^[0-9]{1,2}$"
            required
            autocomplete="off">
-    <label for="dateNaissance" class="col-form-label obligatoire">
-        Date de naissance
-    </label>
-    <input id='dateNaissance' type="date" class="form-control"
-           required
-           style="width: 150px"
-    >
 
     <label for="nom" class="col-form-label  obligatoire">Nom </label>
     <input id="nom"
@@ -42,12 +35,18 @@
     <label for="idEcurie" class="col-form-label">Ecurie </label>
     <select id="idEcurie" class="form-select" style="max-width: 200px"> </select>
     <label for="numPilote" class="col-form-label">Numéro du pilote au sein de l'écurie</label>
-    <select id="numPilote" class="form-select" style="max-width: 80px" value="3">
+    <select id="numPilote" class="form-select" style="max-width: 80px" value="">
         <option value="1">1</option>
         <option value="2">2</option>
          <option value="3">3</option>
         <option value="4">4</option>
     </select>
+
+    <form id="ajouterPiloteForm" action="" method="POST" enctype="multipart/form-data">
+        <label for="photo" class="col-form-label">Photo du Pilote</label>
+        <input id="photo" name="photo" type="file" class="form-control" accept="image/*">
+    </form>
+
     <div class="text-center mt-3">
         <button id="btnAjouter" class="btn btn-danger">Ajouter</button>
     </div>

@@ -1,0 +1,11 @@
+Model Information:
+* title:	RaceCar RC-14
+* source:	https://sketchfab.com/3d-models/racecar-rc-14-8d2bea30457f462d98a91cd472d6035e
+* author:	Dahie (https://sketchfab.com/dahie)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "RaceCar RC-14" (https://sketchfab.com/3d-models/racecar-rc-14-8d2bea30457f462d98a91cd472d6035e) by Dahie (https://sketchfab.com/dahie) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

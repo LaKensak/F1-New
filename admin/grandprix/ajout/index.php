@@ -29,7 +29,6 @@ $head = <<<EOD
 </script>
 EOD;
 
-// chargement des ressources spécifiques de l'interface
 
 // chargement de l'interface
 require RACINE . "/admin/include/interface.php";

@@ -27,13 +27,23 @@ class Pilote extends Table
         $input->SupprimerEspaceSuperflu = true;
         $input->Pattern ="^[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]([ '\-]?[A-Za-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ])*$";
         $input->MaxLength = 20;
-        $this->columns['circuit'] = $input;
+        $this->columns['prenom'] = $input;
 
         // numPilote
         $input = new InputList();
         $input->Require = true;
         $input->Values[] = [1, 2, 3, 4];
         $this->columns['numPilote'] = $input;
+
+        // idEcurie
+        $input = new InputList();
+        $input->Require = true;
+        $lesLignes = Ecurie::getLesId();
+        // stockage des id dans un tableau
+        foreach ($lesLignes as $ligne) {
+            $input->Values[] = $ligne['id'];
+        }
+        $this->columns['idEcurie'] = $input;
 
         // idPays
         $input = new InputList();
@@ -55,13 +65,26 @@ class Pilote extends Table
     public static function getAll(): array
     {
         $sql = <<<EOD
-            select id, nom, prenom, numPilote, idPays, idEcurie,
-            from pilote
-            order by nom, prenom;
+        SELECT id, nom, prenom, numPilote, idPays, idEcurie
+        FROM pilote
+        ORDER BY nom, prenom;
 EOD;
         $select = new Select();
         return $select->getRows($sql);
     }
+
+
+    public static function getPhoto(): array
+    {
+        $sql = <<<EOD
+        SELECT id, photo
+        FROM pilote
+        ORDER BY nom
+EOD;
+        $select = new Select();
+        return $select->getRows($sql);
+    }
+
 
     /**
      * Retourne lle numéro et le nom des pilotes

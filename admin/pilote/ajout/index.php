@@ -5,27 +5,15 @@ require $_SERVER['DOCUMENT_ROOT'] . "/include/autoload.php";
 // alimentation de l'interface :
 $titreFonction = "Ajout d'un pilote";
 
-// récupération des écuries et des pays
-$sql = <<<EOD
-    SELECT id, nom
-    FROM pays
-    ORDER BY nom;
-EOD;
-$select = new Select();
-$lesPays = json_encode($select->getRows($sql));
-
-
-$sql = <<<EOD
-    SELECT id, nom
-    FROM ecurie
-    ORDER BY nom;
-EOD;
-$lesEcuries = json_encode($select->getRows($sql));
+$lesPilotes = json_encode(pilote::getPhoto());
+$lesPays = json_encode(pays::getListe());
+$lesEcuries = json_encode(ecurie::getListe());
 
 $head = <<<EOD
 <script>
-    let lesEcuries = $lesEcuries;
     let lesPays = $lesPays;
+    let lesPilotes = $lesPilotes;
+    let lesEcuries = $lesEcuries;
 </script>
 EOD;
 

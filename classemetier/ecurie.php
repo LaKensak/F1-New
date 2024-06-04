@@ -39,14 +39,15 @@ class Ecurie extends Table
     public static function getAll(): array
     {
         $sql = <<<EOD
-            select id, nom, idPays,
-                   not exists(select 1 from pilote where idEcurie = ecurie.id) as deleteOk
-            from ecurie
-            order by nom;
+        SELECT id, nom, idPays,
+               NOT EXISTS(SELECT 1 FROM pilote WHERE idEcurie = ecurie.id) AS deleteOk
+        FROM ecurie
+        ORDER BY nom;
 EOD;
         $select = new Select();
         return $select->getRows($sql);
     }
+
 
     /**
      * Retourne le numéro et le nom des pilotes
@@ -58,6 +59,18 @@ EOD;
             select id, nom
             from ecurie
             order by nom;
+EOD;
+        $select = new Select();
+        return $select->getRows($sql);
+    }
+
+
+    public static function getLesId(): array
+    {
+        $sql = <<<EOD
+       Select id
+        From ecurie
+        order by nom;   
 EOD;
         $select = new Select();
         return $select->getRows($sql);

@@ -1,7 +1,7 @@
 <?php
 // paramètres de l'upload
 return [
-    'repertoire' => '/img/pilote/',
+    'uploadDir' => ['/img/pilote'],
     'extensions' => ["jpg", "png", "webp", "avif"],
     'types' => ["image/jpeg", "image/png", "image/avif", "image/webp"],
     'maxSize' => 150 * 1024,
